@@ -6,11 +6,12 @@ var gulp            = require('gulp'),
     sass            = require('gulp-sass'),
     concat          = require('gulp-concat'),
     uglify          = require('gulp-uglify'),
-    refix           = require('gulp-autoprefixer'),
+    prefix          = require('gulp-autoprefixer'),
     sourcemaps      = require('gulp-sourcemaps'),
     imagemin        = require('gulp-imagemin'),
     htmlinject      = require('bs-html-injector'),
-    rename          = require('gulp-rename'),
+    rename          = require('gulp-rename');
+
 
 
 // Paths
@@ -28,11 +29,49 @@ var dist_Dir        = 'dist/',
 
 
 
-// Default Task
-gulp.task('default', function(){
+/**
+ * Browser Sycn
+ */
+
+gulp.task('serve', function() {
+  browserSync.init({
+    proxy: 'boilerplate.dev'
+  });
+
+  gulp.watch(src_cssDir, [sass]);
+  gulp.watch(dist_Dir + "*.html").on('change', browserSync.reload);
+  gulp.watch(dist_Dir + "*.php").on('change', browserSync.reload);
 
 });
 
+
+
+/**
+ * Sass Task
+ */
+
+gulp.task('sass', function(){
+
+  gulp.src(src_cssDir)
+    .pipe(sourcemaps.init())
+      .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(dist_cssDir))
+    .pipe(browserSync.stream());
+
+});
+
+
+
+/**
+ * Default Task
+ */
+
+gulp.task('default', [
+
+  'serve',
+
+]);
 
 
 

@@ -1,0 +1,164 @@
+/*------------------------------------*\
+
+  #Base
+
+\*------------------------------------*/
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: $base_font_family;
+  @include typo('default', 'p');
+  font-weight: 400;
+  color: color('white');
+  background: color('blue') url(../images/site_bg_desktop.jpg) center bottom no-repeat;
+  background-size: 100% auto;
+
+  &.noScroll {
+    overflow: hidden;
+  }
+
+  @include breakpoint('small') {
+    @include typo('small', 'p');
+  }
+
+  &::before {
+    content: "default";
+    background: color('red');
+    font-size: 12px;
+    font-weight: 700;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    color: color('white');
+    padding: 10px;
+    z-index: z('overlay');
+    display: none;
+
+    @include breakpoint('small') {
+      content: "small";
+    }
+
+    @include breakpoint('medium') {
+      content: "medium";
+    }
+
+    @include breakpoint('large') {
+      content: "large";
+    }
+  }
+}
+
+a {
+  color: color('red');
+  text-decoration: none;
+  transition: all ms('medium');
+
+  &:hover {
+    color: darken(color('red'), 10%);
+  }
+
+  &:hover,
+  &:focus {
+    outline: 0;
+  }
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+
+/*------------------------------------*\
+
+  #Headlines
+
+\*------------------------------------*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: font('headline');
+  @include typo('default', 'p');
+  text-transform: uppercase;
+}
+
+h1 {
+  @include typo('default', 'h1');
+
+  @include breakpoint('small') {
+    @include typo('small', 'h1');
+  }
+}
+
+h2 {
+  @include typo('default', 'h2');
+
+  @include breakpoint('small') {
+    @include typo('small', 'h2');
+  }
+}
+
+h3 {
+  @include typo('default', 'h3');
+
+  @include breakpoint('small') {
+    @include typo('small', 'h3');
+  }
+}
+
+h4 {
+  @include typo('default', 'h4');
+
+  @include breakpoint('small') {
+    @include typo('small', 'h4');
+  }
+}
+
+
+/*------------------------------------*\
+
+  #Textstuff
+
+\*------------------------------------*/
+
+p {
+  margin-bottom: 40px;
+}
+
+
+/*------------------------------------*\
+
+  #Helpers
+
+\*------------------------------------*/
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border: 0
+}
+
+strong {
+  font-weight: 700;
+}
+
+button,
+button:focus {
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+}

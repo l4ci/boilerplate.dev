@@ -1,0 +1,151 @@
+/*------------------------------------*\
+
+  #Contact
+
+\*------------------------------------*/
+
+.contact {
+  @include row();
+  padding-top: 120px;
+
+  @include breakpoint('small') {
+    padding-top: 160px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
+
+.contact .contact__wrapper {
+  padding: 40px 0;
+  @include col(12, no);
+
+  .col {
+    @include col(12);
+    position: relative;
+
+    h4 {
+      margin-bottom: 8px;
+    }
+  }
+
+  @include breakpoint('small') {
+    @include col(10, no);
+    @include center();
+
+    .col {
+      @include col(6);
+
+      &--full {
+        @include col(12);
+      }
+    }
+  }
+
+  hr {
+    @include col(12);
+    margin: 20px 0 40px 0;
+    position: relative;
+    border: none;
+
+    &::after {
+      content: "";
+      background: rgba(color('white'), .2);
+      left: 16px;
+      right: 16px;
+      height: 1px;
+      width: 100%;
+      top: 0;
+      display: block;
+    }
+  }
+
+  .wpcf7-form-control-wrap {
+    position: relative;
+
+    &.nachricht {
+      > .wpcf7-not-valid-tip {
+        bottom: 11px;
+      }
+    }
+
+    > .wpcf7-not-valid-tip {
+      position: absolute;
+      right: 20px;
+      bottom: -35px;
+      font-size: 12px;
+      padding: 4px 16px 4px 8px;
+      font-weight: 700;
+      background: color('blue');
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        background: color('red');
+        border-radius: 40px;
+        width: 8px;
+        height: 8px;
+        right: 0;
+        top: 50%;
+        margin: -4px 0 0 0;
+      }
+    }
+  }
+
+  .wpcf7 .screen-reader-response {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .wpcf7-response-output {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: darken(color('blue'), 5%);
+    @include typo('default', 'p');
+    transition: all ms('medium');
+    display: block;
+
+    &.wpcf7-display-none {
+      display: none;
+    }
+  }
+
+  .ajax-loader {
+    position: absolute;
+    left: 50%;
+    bottom: -32px;
+    margin-left: -16px;
+  }
+
+  #eventContent__trigger,
+  #anrede {
+    margin-bottom: 0;
+
+    h4 {
+      display: inline-block;
+      float: left;
+      margin: 0 40px 20px 0;
+    }
+  }
+
+  #anrede {
+    padding-bottom: 10px;
+  }
+
+  #eventContent {
+    @include col(12, no);
+
+    .col:first-child {
+      margin-top: 15px;
+    }
+  }
+}

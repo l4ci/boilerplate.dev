@@ -1,0 +1,442 @@
+/* ==========================================================================
+
+   Grid
+
+   ========================================================================== */
+
+// Basic Settings
+$column__width: 119px;
+$gutter__width: 16px;
+$columns: 12;
+
+// Do not edit :D
+$max__width: $column__width*$columns;
+
+// Include Default Gutter
+@mixin gutter() {
+  padding-left: $gutter__width;
+  padding-right: $gutter__width;
+}
+
+// Create a 100% floated container
+@mixin row() {
+  width: 100%;
+  max-width: none;
+  @include clearfix();
+}
+
+// Create cols. Optional Setting to remove default gutter @include col(x, no);
+@mixin col($i, $gutter: yes, $fw: no) {
+  @if $i <= $columns {
+    float: left;
+
+    @if $fw == no {
+      width: ((100 * $column__width * $i) / $max__width) + 0%;
+    } @else if $fw == yes {
+      width: 100%;
+    }
+
+    max-width: $column__width * $i;
+
+    @if $gutter == yes {
+      padding-left: $gutter__width;
+      padding-right: $gutter__width;
+    } @else if $gutter == no {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+  } @else {
+
+    @include row();
+
+    @if $gutter == yes {
+      padding-left: $gutter__width;
+      padding-right: $gutter__width;
+    } @else if $gutter == no {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+// Push the container by x cols
+@mixin push($i) {
+  @if $i > 0 {
+    position: relative;
+    left: ((100 * $column__width * $i) / $max__width) + 0%;
+  } @else if $i < 1 {
+    left: 0;
+  }
+}
+
+// Pull the container by x cols
+@mixin pull($i) {
+  @if $i > 0 {
+    position: relative;
+    right: ((100 * $column__width * $i) / $max__width) + 0%;
+  } @else if $i < 1 {
+    right: 0;
+  }
+}
+
+// ltr / rtl support
+@mixin ltr() {
+  float: left;
+}
+
+@mixin rtl() {
+  float: right;
+}
+
+// center container
+@mixin center() {
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  @include clearfix();
+}
+
+
+/* ==========================================================================
+
+   Breakpoints
+
+   ========================================================================== */
+
+
+@mixin breakpoint($breakpoint,$direction: $media-direction) {
+
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (#{$direction}-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+
+  @else if unitless($breakpoint) {
+    $breakpoint: $breakpoint + 0px;
+
+    @media (#{$direction}-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpointV($breakpoint,$direction: $media-direction-v) {
+
+  @if map-has-key($breakpoints-v, $breakpoint) {
+    @media (#{$direction}-height: #{map-get($breakpoints-v, $breakpoint)}) {
+      @content;
+    }
+  }
+
+  @else if unitless($breakpoint) {
+    $breakpoint: $breakpoint + 0px;
+
+    @media (#{$direction}-height: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+
+/*------------------------------------*\
+
+  #FontSizes
+
+\*------------------------------------*/
+
+
+@mixin typo($break: 'default', $type: 'p', $map: $responsivetypo) {
+  // Get the Submap
+  // $submap: map-get(map-get($map, $break), $type); Ist das gleiche wie first / second level
+
+  $firstlevel: map-get($map, $break);
+  $secondlevel: map-get($firstlevel, $type);
+
+  // Generate the Declaration
+  font-size: map-get($secondlevel,'fs');
+  line-height: map-get($secondlevel, 'lh')
+}
+
+
+// p {
+//   @include typo('default', 'tiny');
+// }
+
+
+/* ==========================================================================
+
+   Clearfix
+
+   ========================================================================== */
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/* ==========================================================================
+
+   Filter
+
+   ========================================================================== */
+
+// https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html
+//
+// grayscale      ex: filter: grayscale(100%);
+// sepia          ex: filter: sepia(100%);
+// saturate       ex: filter: saturate(0%);
+// hue-rotate     ex: filter: hue-rotate(45deg);
+// invert         ex: filter: invert(100%);
+// brightness     ex: filter: brightness(15%);
+// contrast       ex: filter: contrast(200%);
+// blur           ex: filter: blur(2px);
+
+@mixin filter($filter-type,$filter-amount) {
+  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+
+/* ==========================================================================
+
+   Verical Align
+
+   ========================================================================== */
+
+@mixin valign {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+/* ==========================================================================
+
+   Modernizr Mixin
+
+   ========================================================================== */
+
+/**
+* Prints classes for supported or unsupported features
+*
+* @access private
+*
+* @param {Bool}      $supports   - Whether to check for supported features or not
+* @param {ArgList}   $features   - List of features
+*
+* @throws `Modernizr mixin should be called within a selector.`
+* @throws `$feature` is not a `string` for `modernizr.`
+*/
+
+@mixin _modernizr($supports, $features...) {
+
+  // Use the 'no-' prefix if checking for unsuported features (e.g. `.no-translate3d`)
+  $prefix: if($supports, '', 'no-');
+
+  // Features selector
+  // a) create a string if checking for supported features. We'll concatenate class names later on (e.g. `.translate3d.opacity selector`)
+  // b) create a list if checking for unsuported features. We'll append the class names later on (e.g. `.no-js selector, .no-translate3d selector`)
+  $selector: if($supports, '', unquote('.no-js'));
+
+  // Make sure the mixin has been called within a selector
+  @if not & {
+    @error 'Modernizr mixin should be called within a selector.';
+  }
+
+  // Generate placeholder and selectors
+  @each $feature in $features {
+
+    // Making sure $feature is a string
+    @if type-of($feature) != string {
+
+      @error '`#{$feature} is not a string for `modernizr`.';
+
+    } @else {
+
+      // Define the new selector string (e.g. `.translate3d` or `.no-translate3d`)
+      $new-selector: #{'.' + $prefix + $feature};
+
+      // Append the new selector
+      // a) to the string if yep (e.g. `.translate3d.opacity`)
+      // b) to the list if nope (e.g. `.no-translate3d, .no-opacity`)
+      $selector: if($supports, $selector + $new-selector, append($selector, $new-selector, comma));
+
+    }
+  }
+
+  // Generate selector nesting features classes and the parent selector
+  $selector: selector-nest($selector, &);
+
+  // Define feature selector(s) and print @content
+    @at-root #{$selector} {
+      @content;
+    }
+}
+
+
+/* ==========================================================================
+
+   Yep Mixin
+
+   ========================================================================== */
+
+/**
+* Prints classes for supported features
+*
+* @requires modernizr
+*
+* @access public
+*
+* @param {ArgList} $features   - List of features
+*
+* @example scss
+* .my-selector {
+*   @include yep(opacity, csstransforms) {
+*     // ...
+*   }
+* }
+*/
+
+@mixin yep($features...) {
+  @include _modernizr(true, $features...) {
+    @content;
+  }
+}
+
+/* ==========================================================================
+
+   Nope Mixin
+
+   ========================================================================== */
+
+/**
+* Nope "alias"
+* Prints classes for unsupported features and lack of JS
+*
+* @requires modernizr
+*
+* @access public
+*
+* @param {ArgList} $features - List of features
+*
+* @example scss
+* .my-selector {
+*   @include nope(opacity, csstransforms) {
+*     // ...
+*   }
+* }
+*/
+
+@mixin nope($features...) {
+  @include _modernizr(false, $features...) {
+    @content;
+  }
+}
+
+
+/* ==========================================================================
+
+   Tag Mixin
+
+   ========================================================================== */
+
+@mixin tag($tag, $c: false, $m: false, $context: false) {
+  // Defaults
+  $child: null;
+  $ct: null;
+  $mod: null;
+
+  // Build Child and Modifier Fragments
+  @if $c { $child: '__#{$c}'; }
+  @if $m { $mod: "~='#{$m}'"; }
+
+  // Build Selector
+  @if $context {
+    > [#{$tag}#{$child} #{$mod}] {
+      @content;
+    }
+  } @else {
+    @at-root {
+      [#{$tag}#{$child} #{$mod}] {
+        @content;
+      }
+    }
+  }
+}
+
+/* Example
+
+$primButton: "primButton";
+
+$sel: 'bananna';
+
+@include tag($sel) {
+  background-color: yellow;
+  display: inline-block;
+
+  @include tag($sel, false, rotten) {
+    background-color: black;
+  }
+  @include tag($sel, fruit) {
+    color: brown;
+    padding: 10px 40px;
+  }
+
+  @include tag($sel, fruit, too-fresh) {
+    color: yellow;
+  }
+  @include tag($sel, fruit, expanded) {
+    padding: 40px 80px;
+  }
+}
+
+.fruit-basket {
+  @include tag($sel, $context: true) {
+    background-color: red;
+  }
+}
+
+*/
+
+/* ==========================================================================
+
+   Square Angle Corner Mixin
+
+   ========================================================================== */
+@mixin squareAngleCorner($variation: 'top-right') {
+  content: " ";
+
+  position: absolute;
+
+  display: inline-block;
+  width: 9px;
+  height: 10px;
+
+  @if $variation == 'top-right' {
+    border-top: border('solid--xdarkgray3');
+    border-right: border('solid--xdarkgray3');
+
+    top: -8px;
+    right: -2px;
+  }
+  @else if $variation == 'bottom-left' {
+    border-bottom: border('solid--xdarkgray3');
+    border-left: border('solid--xdarkgray3');
+
+    bottom: 0;
+    left: -2px;
+  }
+}

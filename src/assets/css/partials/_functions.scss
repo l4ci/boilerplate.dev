@@ -1,0 +1,110 @@
+/* ==========================================================================
+
+   Colors
+
+   ========================================================================== */
+
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
+
+/* ==========================================================================
+
+   Box Shadows
+
+   ========================================================================== */
+
+@function boxshadow($key) {
+  @if map-has-key($boxshadows, $key) {
+    @return map-get($boxshadows, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $boxshadows.";
+  @return null;
+}
+
+/* ==========================================================================
+
+   Borders
+
+   ========================================================================== */
+
+@function border($key) {
+  @if map-has-key($borders, $key) {
+    @return map-get($borders, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $borders.";
+  @return null;
+}
+
+
+/* ==========================================================================
+
+   Fonts
+
+   ========================================================================== */
+
+@function font($key) {
+  @if map-has-key($fonts, $key) {
+    @return map-get($fonts, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $fonts.";
+  @return null;
+}
+
+@function fontSize($key) {
+  @if map-has-key($fontSizes, $key) {
+    @return map-get($fontSizes, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $fontSizes.";
+  @return null;
+}
+
+
+/* ==========================================================================
+
+   Timings
+
+   ========================================================================== */
+
+@function ms($key) {
+  @if map-has-key($timings, $key) {
+    @return map-get($timings, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $timings.";
+  @return null;
+}
+
+
+/* ==========================================================================
+
+   Z-Index
+
+   ========================================================================== */
+
+@function z($key) {
+  @if map-has-key($z-layers, $key) {
+    @return map-get($z-layers, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $z-layers.";
+  @return null;
+}
+
+// Examples
+// .overlay {
+//   z-index: z(overlay);
+// }
+
+// .element {
+//   z-index: (z(default) + 1);
+// }

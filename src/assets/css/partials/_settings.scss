@@ -1,0 +1,196 @@
+/* ==============================
+   Colors
+   Desc: http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+   ============================== */
+
+
+// Colormap
+$colors: (
+
+  // Default Colors
+  'white':          #fff,
+  'black':          #000,
+
+  // CI Colors
+  'red':          #dd013f,
+  'blue':         #0c2044,
+);
+
+// Color Vars
+$_white:           map-get($colors, 'white');
+$_black:           map-get($colors, 'black');
+$_red:             map-get($colors, 'red');
+$_blue:            map-get($colors, 'blue');
+
+
+/* ==========================================================================
+
+   Box Shadows
+
+   ========================================================================== */
+
+$boxshadows: (
+
+  // Default Colors
+  // example: 'firstLevel':   (0 0 10px 0 rgba(0,0,0,.15)),
+);
+
+
+/* ==========================================================================
+
+   Borders
+
+   ========================================================================== */
+
+$borders: (
+
+  // Dotted Border
+  // 'dotted--xdarkgray':    1px dotted $_xdarkgray,
+
+  // Solid Borders
+  'solid--white':            1px solid $_white,
+  'solid--white--2':         2px solid $_white,
+  'solid--white--6':         6px solid $_white,
+  'solid--white--20':        20px solid $_white,
+  // 'solid--xdarkgray':     1px solid $_xdarkgray,
+  // 'solid--xdarkgray3':    3px solid $_xdarkgray,
+  // 'solid--xdarkgray10':   10px solid $_xdarkgray,
+
+  // Solid Trans
+  // 'solid--trans':         1px solid transparent,
+);
+
+/* ==========================================================================
+
+   Fonts
+
+   ========================================================================== */
+
+$base_font_family: sans-serif;
+$base_font_size: 14px;
+$em-base: $base_font_size; // For Bourbon rem/em calc
+
+$base_line_height: 1.4;
+
+// Font size set
+$fontSizes: (
+  'small':      12px,
+  'base':       14px,
+  'medium':     18px,
+  'large':      25px,
+  'xlarge':     35px,
+);
+
+$responsivetypo: (
+
+  // Default Breakpoint (Mobile First)
+  'default': (
+    'tiny': (
+      'fs': 12px, 'lh': 1.5,
+    ),
+    'p': (
+      'fs': 14px, 'lh': 1.5,
+    ),
+    'h1': (
+      'fs': 35px, 'lh': 1.25,
+    ),
+    'h2': (
+      'fs': 25px, 'lh': 1.25,
+    ),
+    'h3': (
+      'fs': 18px, 'lh': 1.25,
+    ),
+    'h4': (
+      'fs': 14px, 'lh': 1.25,
+    ),
+  ),
+
+  // Breakpoint Small
+  'small': (
+    'tiny': (
+      'fs': 12px, 'lh': 1.5,
+    ),
+    'p': (
+      'fs': 16px, 'lh': 1.5,
+    ),
+    'h1': (
+      'fs': 80px, 'lh': 1.15,
+    ),
+    'h2': (
+      'fs': 45px, 'lh': 1.15,
+    ),
+    'h3': (
+      'fs': 20px, 'lh': 1.15,
+    ),
+    'h4': (
+      'fs': 16px, 'lh': 1.25,
+    ),
+  )
+);
+
+// Font family set
+$fonts: (
+  'basic':              ('Lucida Grande', Helvetica, Arial, sans-serif),
+  'headline':           ('univers-cb', Tahoma, Helvetica, sans-serif),
+);
+
+
+/* ==========================================================================
+
+   Breakpoint Settings / Direction
+
+   ========================================================================== */
+
+// Fix Breakpoints Sizes
+$breakpoints: (
+  'default':    '',
+  'small':      667px,
+  'medium':     1024px,
+  'large':      1280px,
+);
+
+$breakpoints-v: (
+  'small':      600px,
+  'normal':     800px,
+  'large':      1000px,
+);
+
+// horizontal
+$media-direction: min;
+
+// vertical
+$media-direction-v: max;
+
+
+/* ==========================================================================
+
+   Timings
+
+   ========================================================================== */
+
+$timings: (
+  'zero':     0,
+  'fast':     250ms,
+  'medium':   500ms,
+  'slow':     1000ms,
+  'xslow':    2000ms,
+  'xxslow':   3000ms,
+);
+
+
+/* ==========================================================================
+
+   Z-Index
+
+   ========================================================================== */
+
+$z-layers: (
+  'deep':     -9999,
+  'default':      1,
+  'low':         10,
+  'middle':     100,
+  'high':      1000,
+  'dropdown':  3000,
+  'overlay':   4000,
+  'modal':     4001,
+);

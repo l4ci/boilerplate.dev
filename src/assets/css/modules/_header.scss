@@ -1,0 +1,33 @@
+/*------------------------------------*\
+
+  #Header
+
+\*------------------------------------*/
+
+.pageHeader {
+  @include col(12);
+  @include center();
+  background: red;
+  position: relative;
+  z-index: z('overlay');
+
+  &__logo {
+    @include col(1.5, no, yes);
+    position: fixed;
+    top: 16px;
+
+    @include breakpoint('small') {
+      @include col(2.3, no, yes);
+      top: 24px;
+    }
+
+    @include breakpoint('medium') {
+      @include col(3, no, yes);
+      top: 32px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
