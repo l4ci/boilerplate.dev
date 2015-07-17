@@ -41,6 +41,7 @@ gulp.task('serve', function() {
   gulp.watch(src_cssDir, [sass]);
   gulp.watch(dist_Dir + "*.html").on('change', browserSync.reload);
   gulp.watch(dist_Dir + "*.php").on('change', browserSync.reload);
+  gulp.watch("js/*.js", ['js-watch']);
 
 });
 
@@ -61,6 +62,20 @@ gulp.task('sass', function(){
 
 });
 
+
+
+/**
+ * JS Task
+ */
+
+gulp.task('js', function () {
+  gulp.src(src_jsDir)
+    //.pipe(browserify())
+    .pipe(uglify())
+    .pipe(gulp.dest(dist_jsDir));
+});
+
+gulp.task('js-watch', ['js'], browserSync.reload);
 
 
 /**
