@@ -38,10 +38,11 @@ gulp.task('serve', function() {
     proxy: 'boilerplate.dev'
   });
 
-  gulp.watch(src_cssDir, [sass]);
-  gulp.watch(dist_Dir + "*.html").on('change', browserSync.reload);
-  gulp.watch(dist_Dir + "*.php").on('change', browserSync.reload);
-  gulp.watch("js/*.js", ['js-watch']);
+  gulp.watch(src_cssDir, ['sass']);
+
+  gulp.watch(dist_Dir + '**/*.{html,php}').on('change', ['move']);
+
+  gulp.watch(src_jsDir, ['js-watch']);
 
 });
 
@@ -78,6 +79,15 @@ gulp.task('js', function () {
 gulp.task('js-watch', ['js'], browserSync.reload);
 
 
+
+gulp.task('move-files', function() {
+  gulp.src(src_Dir + '/**/*.{html,php}')
+    .pipe(gulp.dest(dist_Dir))
+    .pipe(browserSync.reload));
+});
+
+
+
 /**
  * Default Task
  */
@@ -87,7 +97,6 @@ gulp.task('default', [
   'serve',
 
 ]);
-
 
 
 
