@@ -14,5 +14,5 @@ Now run `gulp` and start working. Gulp compiles your `.scss` files and concatina
 
 ## Shortform CLI
 - bower install
-- npm install
+- npm install / npm init
 - gulp
