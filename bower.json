@@ -1,0 +1,16 @@
+{
+  "name": "Gulp Dev",
+  "version": "0.0.0",
+  "authors": [
+    "David Hellmann <david.hellmann@redbullcreative.com>"
+  ],
+  "description": "testing",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
