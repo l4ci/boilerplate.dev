@@ -23,7 +23,7 @@ var src             = '___src/',
     srcDummy        = src + 'dummy/',
     srcTemplates    = src + 'templates/',
     srcBower        = src + 'bower/',
-    dist            = './',
+    dist            = '___dist/',
     distAssets      = dist + 'assets/',
     distJS          = distAssets + 'js/',
     distCSS         = distAssets + 'css/',
@@ -117,10 +117,10 @@ gulp.task('sass', function(){
  */
 
 var combinejs = [
-  // srcBower  + 'jquery/dist/jquery.js',
-  // srcJS     + 'plugins/form.js',
-  // srcJS     + 'plugins/lightbox.js',
-  // srcJS     + 'plugins/stacks.js',
+  srcBower  + 'jquery/dist/jquery.js',
+  srcJS     + 'plugins/form.js',
+  srcJS     + 'plugins/lightbox.js',
+  srcJS     + 'plugins/stacks.js',
   srcJS     + 'plugins/stage.js',
 ];
 
@@ -156,6 +156,18 @@ gulp.task('watch', ['browser-sync'], function(){
   ]);
 });
 
+
+
+/**
+ * Init Task
+ */
+
+gulp.task('init', [
+  'sass',
+  'scripts',
+  'templates',
+  'dummy'
+]);
 
 
 /**
