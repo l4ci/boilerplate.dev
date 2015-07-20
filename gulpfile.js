@@ -39,13 +39,13 @@ gulp.task('serve', function() {
   });
 
   // Watch Sass
-  gulp.watch(src_cssDir, ['sass']);
+  gulp.watch(src_cssDir   + '**/*.scss'.on('change', ['sass']);
 
   // Watch JS
-  gulp.watch(src_jsDir, ['js-watch']);
+  gulp.watch(src_jsDir    + '**/*.js'.on('change', ['js-watch']);
 
   // Watch PHp
-  gulp.watch(src_Dir + '**/*.php').on('change',  ['php-watch']);
+  gulp.watch(src_Dir      + '**/*.php').on('change', ['php-watch']);
 
 });
 
@@ -57,7 +57,7 @@ gulp.task('serve', function() {
 
 gulp.task('sass', function(){
 
-  gulp.src(src_cssDir)
+  gulp.src(src_cssDir + '*.scss')
     .pipe(sourcemaps.init())
       .pipe(sass({outputStyle: 'compressed'}))
     .pipe(sourcemaps.write())
@@ -73,7 +73,7 @@ gulp.task('sass', function(){
  */
 
 gulp.task('js', function () {
-  gulp.src(src_jsDir)
+  gulp.src(src_jsDir + '*.js')
     .pipe(uglify())
     .pipe(gulp.dest(dist_jsDir));
 });
