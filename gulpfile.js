@@ -10,8 +10,8 @@ var gulp            = require('gulp'),
     sourcemaps      = require('gulp-sourcemaps'),
     imagemin        = require('gulp-imagemin'),
     htmlinject      = require('bs-html-injector'),
-    rename          = require('gulp-rename'),
-    options         = {};
+    jshint          = require('gulp-jshint'),
+    rename          = require('gulp-rename');
 
 
 
@@ -28,6 +28,18 @@ var src             = '___src/',
     distJS          = distAssets + 'js/',
     distCSS         = distAssets + 'css/',
     distDummy       = dist + 'dummy/';
+
+
+// Options
+var autoprefixerOptions = ['last 2 version', '> 1%'];
+
+
+
+/*------------------------------------*\
+
+  #NOTHING TO CHANGE HERE DUDE
+
+\*------------------------------------*/
 
 
 
@@ -89,13 +101,34 @@ gulp.task('sass', function(){
         precision: 10
       }))
       .pipe(autoprefixer({
-        browsers: ['last 2 version', '> 1%']
+        browsers: autoprefixerOptions
       }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(distCSS))
     .pipe(browserSync.reload({ stream:true }));
 });
 
+
+
+/**
+ * JS Task
+ */
+
+var combinejs = [
+  // srcBower  + 'jquery/dist/jquery.js',
+  // srcJS     + 'plugins/form.js',
+  // srcJS     + 'plugins/lightbox.js',
+  // srcJS     + 'plugins/stacks.js',
+  srcJS     + 'plugins/stage.js',
+];
+
+gulp.task('scripts', function() {
+  gulp.src(combinejs)
+    .pipe(concat('all.min.js'))
+    .pipe(jshint())
+    .pipe(uglify())
+    .pipe(gulp.dest(distJS));
+});
 
 
 /**
@@ -106,6 +139,13 @@ gulp.task('watch', ['browser-sync'], function(){
 
   // Watch Sass Files
   gulp.watch(srcCSS + '*.scss', ['sass']);
+
+  // Watch JS Files
+  gulp.watch(srcJS + '**/*.js', [
+    'scripts',
+    'browser-sync-reload'
+  ]);
+
 
   // Watch Template Files
   gulp.watch(srcTemplates + '**/*.php', [
