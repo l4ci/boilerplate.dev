@@ -31,6 +31,6 @@ Thumbs.db
 *.zip
 
 # Ignore project specifics #
-bower_components/
+bower/
 node_modules/
 .tmp

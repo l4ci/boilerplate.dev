@@ -1,9 +1,8 @@
-/* ==========================================================================
+body {
+  color: green !important;
+}
 
-   Imports
-
-   ========================================================================== */
-
+// Settings & Basics
 @import 'partials/settings';
 @import 'partials/functions';
 @import 'partials/mixins';
@@ -11,7 +10,7 @@
 @import 'partials/base';
 
 
-// Fonts
+// Modules
 @import 'modules/fonts';
 @import 'modules/header';
 @import 'modules/footer';
