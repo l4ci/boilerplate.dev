@@ -30,19 +30,11 @@ var src             = '___src/',
     distDummy       = dist + 'dummy/';
 
 
-options.sass = {
-    errLogToConsole: true,
-    outputStyle: 'compressed',
-    precision: 10
-};
 
-options.autoprefixer = {
-    browsers: ['last 2 version',
-                '> 1%']
-};
+/**
+ * BrowserSync Proxy
+ */
 
-
-// BrowserSync Proxy
 gulp.task('browser-sync', function(){
   browserSync.init({
     proxy: "boilerplate.dev"
@@ -50,40 +42,66 @@ gulp.task('browser-sync', function(){
 });
 
 
-// BrowserSync reload all Browsers
+
+/**
+ * BrowserSync reload all Browsers
+ */
+
 gulp.task('browser-sync-reload', function () {
     browserSync.reload();
 });
 
 
-// Move Templates Files
+
+/**
+ * Move Templates Files
+ */
+
 gulp.task('templates', function(){
   gulp.src(srcTemplates + '**/*.php')
     .pipe(gulp.dest(dist));
 });
 
 
-// Move Dummy Files
+
+/**
+ * Move Dummy Files
+ */
+
 gulp.task('dummy', function(){
   gulp.src(srcDummy + '**/*.{php,html}')
     .pipe(gulp.dest(distDummy));
 });
 
 
+
+/**
+ * Sass Task
+ */
+
 gulp.task('sass', function(){
   gulp.src(srcCSS + '*.scss')
     .pipe(plumber())
     .pipe(rename({ suffix: '.min'}))
     .pipe(sourcemaps.init())
-      .pipe(sass(options.sass))
-      .pipe(autoprefixer(options.autoprefixer))
+      .pipe(sass({
+        outputStyle: 'compressed',
+        precision: 10
+      }))
+      .pipe(autoprefixer({
+        browsers: ['last 2 version', '> 1%']
+      }))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(distCSS))
     .pipe(browserSync.reload({ stream:true }));
 });
 
 
-// Watch Task
+
+/**
+ * Watch Task
+ */
+
 gulp.task('watch', ['browser-sync'], function(){
 
   // Watch Sass Files
@@ -97,5 +115,9 @@ gulp.task('watch', ['browser-sync'], function(){
 });
 
 
-// Default Task
+
+/**
+ * Default Task
+ */
+
 gulp.task('default', ['watch']);
