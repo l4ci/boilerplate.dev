@@ -87,10 +87,13 @@ gulp.task('sass', function(){
 gulp.task('watch', ['browser-sync'], function(){
 
   // Watch Sass Files
-  gulp.watch(srcCSS, ['sass']);
+  gulp.watch(srcCSS + '*.scss', ['sass']);
 
   // Watch Template Files
-  gulp.watch(srcTemplates + '**/*.php', ['templates'], ['browser-sync-reload']);
+  gulp.watch(srcTemplates + '**/*.php', [
+    'templates',
+    'browser-sync-reload'
+  ]);
 });
 
 
