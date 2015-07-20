@@ -49,7 +49,9 @@ var autoprefixerOptions = ['last 2 version', '> 1%'];
 
 gulp.task('browser-sync', function(){
   browserSync.init({
-    proxy: "boilerplate.dev"
+    options: {
+      proxy: "boilerplate.dev"
+    }
   });
 });
 

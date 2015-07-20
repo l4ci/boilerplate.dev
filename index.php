@@ -23,7 +23,7 @@
     <!-- WebsiteWrapper -->
     <div class="websiteWrapper">
 
-      Yos asdsa asd aosdh asad s asjdpiads
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue scelerisque bibendum. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.
 
     </di>
 
@@ -35,5 +35,18 @@
     <script src="assets/js/all.min.js"></script>
 
     <!-- Google Analytics JavaScript here -->
+
+
+    <?php
+      $host = $_SERVER['HTTP_HOST'];
+      if($host == "localhost" or $host == "boilerplate.dev") {
+    ?>
+      <!-- BrowserSync -->
+      <script type='text/javascript' id="__bs_script__">
+        //<![CDATA[
+        document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.7.13.js'><\/script>".replace("HOST", location.hostname));
+        //]]>
+      </script>
+    <?php } ?>
   </body>
   </html>
