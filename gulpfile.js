@@ -13,6 +13,7 @@ var gulp            = require('gulp'),
     jshint          = require('gulp-jshint'),
     modernizr       = require('gulp-modernizr'),
     rename          = require('gulp-rename'),
+    changed         = require('gulp-changed'),
     del             = require('del');
 
 
@@ -22,6 +23,8 @@ var src             = '___src/',
     srcAssets       = src + 'assets/',
     srcJS           = srcAssets + 'js/',
     srcCSS          = srcAssets + 'css/',
+    srcFonts        = srcAssets + 'fonts/',
+    srcImages       = srcAssets + 'images/',
     srcDummy        = src + 'dummy/',
     srcTemplates    = src + 'templates/',
     srcBower        = src + 'bower/',
@@ -29,6 +32,8 @@ var src             = '___src/',
     distAssets      = dist + 'assets/',
     distJS          = distAssets + 'js/',
     distCSS         = distAssets + 'css/',
+    distFonts       = distAssets + 'fonts/',
+    distImages      = distAssets + 'images/',
     distDummy       = dist + 'dummy/';
 
 
@@ -42,6 +47,12 @@ var autoprefixerOptions = ['last 2 version', '> 1%'];
   #NOTHING TO CHANGE HERE DUDE
 
 \*------------------------------------*/
+
+
+
+var onError = function(err) {
+    console.log(err);
+}
 
 
 
@@ -72,13 +83,44 @@ gulp.task('browser-sync', function(){
 
 
 /**
+ * Copy Fonts
+ */
+
+gulp.task('copy:fonts', function() {
+  gulp.src(srcFonts + '**/*.{ttf,woff,eof,svg,eot}')
+    .pipe(gulp.dest(distFonts))
+    .pipe(notify({ message: 'Fonts task complete' }));
+});
+
+
+
+/**
+ * Image Task
+ */
+
+gulp.task('images', function() {
+  gulp.src(srcImages + '**/*')
+    .pipe(plumber({
+        errorHandler: onError
+    }))
+    .pipe(changed(distImages))
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}]
+    }))
+    .pipe(gulp.dest(distImages))
+    .pipe(notify({ message: 'Images task complete' }));
+});
+
+
+/**
  * Move Templates Files
  */
 
-
 gulp.task('templates', function(){
   gulp.src(srcTemplates + '**/*.php')
-    .pipe(gulp.dest(dist));
+    .pipe(gulp.dest(dist))
+    .pipe(notify({ message: 'Templates task complete' }));
 });
 
 
@@ -89,7 +131,8 @@ gulp.task('templates', function(){
 
 gulp.task('dummy', function(){
   gulp.src(srcDummy + '**/*.{php,html}')
-    .pipe(gulp.dest(distDummy));
+    .pipe(gulp.dest(distDummy))
+    .pipe(notify({ message: 'Dummy task complete' }));
 });
 
 
@@ -100,7 +143,9 @@ gulp.task('dummy', function(){
 
 gulp.task('sass', function(){
   gulp.src(srcCSS + '*.scss')
-    .pipe(plumber())
+    .pipe(plumber({
+      errorHandler: onError
+    }))
     .pipe(rename({ suffix: '.min'}))
     .pipe(sourcemaps.init())
       .pipe(sass({
@@ -112,6 +157,7 @@ gulp.task('sass', function(){
       }))
     .pipe(sourcemaps.write('./maps/'))
     .pipe(gulp.dest(distCSS))
+    .pipe(notify({ message: 'Sass task complete' }));
 });
 
 
@@ -129,7 +175,8 @@ gulp.task('plugins', function() {
     .pipe(concat('plugins.min.js'))
     .pipe(jshint())
     .pipe(uglify())
-    .pipe(gulp.dest(distJS));
+    .pipe(gulp.dest(distJS))
+    .pipe(notify({ message: 'Plugins task complete' }));
 });
 
 var combineJSScripts = [
@@ -138,13 +185,16 @@ var combineJSScripts = [
 
 gulp.task('scripts', function() {
   gulp.src(combineJSScripts)
-    .pipe(plumber())
+    .pipe(plumber({
+      errorHandler: onError
+    }))
     .pipe(concat('app.min.js'))
     .pipe(sourcemaps.init())
     .pipe(jshint())
     .pipe(uglify())
     .pipe(sourcemaps.write('./maps/'))
-    .pipe(gulp.dest(distJS));
+    .pipe(gulp.dest(distJS))
+    .pipe(notify({ message: 'Scripts task complete' }));
 });
 
 
@@ -161,7 +211,8 @@ gulp.task('copyscripts', function() {
   gulp.src(copyThisScripts)
     .pipe(uglify())
     .pipe(rename({ suffix: '.min'}))
-    .pipe(gulp.dest(distJS + 'vendor/'));
+    .pipe(gulp.dest(distJS + 'vendor/'))
+    .pipe(notify({ message: 'Copyscripts task complete' }));
 });
 
 
@@ -203,7 +254,8 @@ gulp.task('modernizr', function() {
     }))
     .pipe(uglify())
     .pipe(rename({ suffix: '-custom.min'}))
-    .pipe(gulp.dest(distJS + 'vendor/'));
+    .pipe(gulp.dest(distJS + 'vendor/'))
+    .pipe(notify({ message: 'Modernizr task complete' }));
 });
 
 
@@ -219,7 +271,9 @@ gulp.task('init', [
   'templates',
   'dummy',
   'copyscripts',
-  'modernizr'
+  'modernizr',
+  'copy:fonts',
+  'images'
 ]);
 
 
@@ -234,14 +288,13 @@ gulp.task('watch', ['browser-sync'], function(){
   gulp.watch(srcCSS + '**/*.scss', ['sass']);
 
   // Watch JS Files
-  gulp.watch(srcJS + '**/*.js', [
-    'scripts'
-  ]);
+  gulp.watch(srcJS + '**/*.js', ['scripts']);
 
   // Watch Template Files
-  gulp.watch(srcTemplates + '**/*.php', [
-    'templates'
-  ]);
+  gulp.watch(srcTemplates + '**/*.php', ['templates']);
+
+  // If an image is modified, run our images task to compress images
+  gulp.watch(srcImages + '**/*', ['images']);
 
 });
 
