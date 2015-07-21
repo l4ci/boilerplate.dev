@@ -49,21 +49,23 @@ var autoprefixerOptions = ['last 2 version', '> 1%'];
  */
 
 gulp.task('browser-sync', function(){
-  browserSync.init({
-    options: {
-      proxy: "boilerplate.dev"
+  browserSync.init([
+    // Files to watch
+    dist +'**/*.{html,php}',
+    distCSS +'**/*.css',
+    distJS + '**/*.js'],
+  { options: {
+      debugInfo: true,
+      watchTask: true,
+      proxy: 'boilerplate.dev',
+      ghostMode: {
+        clicks : true,
+        scroll : true,
+        links  : true,
+        forms  : true
+      }
     }
   });
-});
-
-
-
-/**
- * BrowserSync reload all Browsers
- */
-
-gulp.task('browser-sync-reload', function () {
-    browserSync.reload();
 });
 
 
@@ -108,7 +110,6 @@ gulp.task('sass', function(){
       }))
     .pipe(sourcemaps.write('./maps/'))
     .pipe(gulp.dest(distCSS))
-    .pipe(browserSync.stream({match: "**/*.css"}));
 });
 
 
@@ -222,10 +223,10 @@ gulp.task('init', [
 
 
 /**
- * Default Task
+ * Watch Task
  */
 
-gulp.task('default', ['browser-sync'], function (){
+gulp.task('watch', ['browser-sync'], function(){
 
   // Watch Sass Files
   gulp.watch(srcCSS + '**/*.scss', ['sass']);
@@ -239,10 +240,12 @@ gulp.task('default', ['browser-sync'], function (){
   gulp.watch(srcTemplates + '**/*.php', [
     'templates'
   ]);
-
-  // Watch Template Files
-  gulp.watch(dist + '**/*.{php,html,js}', [
-    'browser-sync-reload'
-  ]);
-
 });
+
+
+
+/**
+ * Default Task
+ */
+
+gulp.task('default', ['watch', 'browser-sync']);
