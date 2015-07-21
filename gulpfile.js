@@ -66,9 +66,10 @@ var onError = function(err) {
 gulp.task('browser-sync', function(){
   browserSync.init([
     // Files to watch
-    dist +'**/*.{html,php}',
-    distCSS +'**/*.css',
-    distJS + '**/*.js'],
+    dist        + '**/*.{html,php}',
+    distImages  + '**/*',
+    distCSS     + '**/*.css',
+    distJS      + '**/*.js'],
   { options: {
       debugInfo: true,
       watchTask: true,
