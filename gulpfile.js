@@ -75,27 +75,6 @@ gulp.task('browser-sync', function(){
  * Move Templates Files
  */
 
-// gulp.task('clean:templates', function() {
-//   del([
-//     dist + '/**/*.php'
-//   ],{
-//     force: true
-//   });
-// });
-
-// gulp.task('copy:templates', function() {
-//   del([
-//     dist + '/**/*.php'
-//   ],{
-//     force: true
-//   });
-// });
-
-gulp.task('clean:templates', function(cb) {
-  del([
-    dist + '/**/*.php'
-  ], cb);
-});
 
 gulp.task('templates', function(){
   gulp.src(srcTemplates + '**/*.php')
@@ -260,11 +239,10 @@ gulp.task('watch', ['browser-sync'], function(){
   ]);
 
   // Watch Template Files
-  // gulp.watch(srcTemplates + '**/*.php', [
-  //   'templates'
-  // ]);
+  gulp.watch(srcTemplates + '**/*.php', [
+    'templates'
+  ]);
 
-  gulp.watch([srcTemplates + '**/*.php'], ['clean:templates','templates']);
 });
 
 
