@@ -104,7 +104,7 @@ gulp.task('copy:fonts', function() {
 gulp.task('images', function() {
   gulp.src(srcImages + '**/*')
     .pipe(plumber({
-        errorHandler: onError
+      errorHandler: onError
     }))
     .pipe(changed(distImages))
     .pipe(imagemin({
