@@ -222,10 +222,10 @@ gulp.task('init', [
 
 
 /**
- * Watch Task
+ * Default Task
  */
 
-gulp.task('watch', ['browser-sync'], function(){
+gulp.task('default', ['browser-sync'], function (){
 
   // Watch Sass Files
   gulp.watch(srcCSS + '**/*.scss', ['sass']);
@@ -241,12 +241,5 @@ gulp.task('watch', ['browser-sync'], function(){
     'templates',
     'browser-sync-reload'
   ]);
+
 });
-
-
-
-/**
- * Default Task
- */
-
-gulp.task('default', ['watch']);
