@@ -43,7 +43,17 @@
   <!-- WebsiteWrapper -->
   <div class="websiteWrapper">
 
-    Hello World.
+    <!-- websiteHeader -->
+    <header class="websiteHeader">
+      Header
+    </header>
+
+    <p>Hello World.</p>
+
+    <!-- websiteFooter -->
+    <footer class="websiteFooter">
+      Footer
+    </footer>
 
   </div>
 
