@@ -237,7 +237,6 @@ gulp.task('watch', ['browser-sync'], function(){
     'browser-sync-reload'
   ]);
 
-
   // Watch Template Files
   gulp.watch(srcTemplates + '**/*.php', [
     'templates',
