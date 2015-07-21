@@ -3,7 +3,6 @@
  */
 
 ;(function($) {
-
   setTimeout(function() {
     $('body').addClass('is_ready');
   }, 0), setTimeout(function() {

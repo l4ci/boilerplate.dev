@@ -135,9 +135,12 @@ var combineJSPlugins = [
 
 gulp.task('plugins', function() {
   gulp.src(combineJSPlugins)
+    .pipe(plumber())
     .pipe(concat('app.min.js'))
+    .pipe(sourcemaps.init())
     .pipe(jshint())
     .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(distJS));
 });
 
@@ -150,7 +153,7 @@ gulp.task('plugins', function() {
 gulp.task('watch', ['browser-sync'], function(){
 
   // Watch Sass Files
-  gulp.watch(srcCSS + '*.scss', ['sass']);
+  gulp.watch(srcCSS + '**/*.scss', ['sass']);
 
   // Watch JS Files
   gulp.watch(srcJS + '**/*.js', [
