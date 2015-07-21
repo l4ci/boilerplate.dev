@@ -52,7 +52,7 @@
   </div>
 
   <!-- JS Scripts & Plugins -->
-  <script src="assets/js/scripts.min.js"></script>
+  <script src="assets/js/plugins.min.js"></script>
   <script src="assets/js/app.min.js"></script>
 
   <!-- Google Analytics JavaScript here -->

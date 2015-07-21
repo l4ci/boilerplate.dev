@@ -123,14 +123,14 @@ var combineJSPlugins = [
 
 gulp.task('plugins', function() {
   gulp.src(combineJSPlugins)
-    .pipe(concat('scripts.min.js'))
+    .pipe(concat('plugins.min.js'))
     .pipe(jshint())
     .pipe(uglify())
     .pipe(gulp.dest(distJS));
 });
 
 var combineJSScripts = [
-  srcJS     + 'plugins/example.js',
+  srcJS     + 'scripts/example.js',
 ];
 
 gulp.task('scripts', function() {
