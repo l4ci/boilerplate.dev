@@ -11,6 +11,7 @@ var gulp            = require('gulp'),
     imagemin        = require('gulp-imagemin'),
     htmlinject      = require('bs-html-injector'),
     jshint          = require('gulp-jshint'),
+    modernizr       = require('gulp-modernizr');
     rename          = require('gulp-rename');
 
 
@@ -116,21 +117,30 @@ gulp.task('sass', function(){
  * JS Task
  */
 
-var combinejs = [
+var combineJSScripts = [
   srcBower  + 'jquery/dist/jquery.js',
-  srcJS     + 'plugins/form.js',
-  srcJS     + 'plugins/lightbox.js',
-  srcJS     + 'plugins/stacks.js',
-  srcJS     + 'plugins/stage.js',
 ];
 
 gulp.task('scripts', function() {
-  gulp.src(combinejs)
-    .pipe(concat('all.min.js'))
+  gulp.src(combineJSScripts)
+    .pipe(concat('scripts.min.js'))
     .pipe(jshint())
     .pipe(uglify())
     .pipe(gulp.dest(distJS));
 });
+
+var combineJSPlugins = [
+  srcJS     + 'plugins/example.js',
+];
+
+gulp.task('plugins', function() {
+  gulp.src(combineJSPlugins)
+    .pipe(concat('app.min.js'))
+    .pipe(jshint())
+    .pipe(uglify())
+    .pipe(gulp.dest(distJS));
+});
+
 
 
 /**
@@ -145,6 +155,7 @@ gulp.task('watch', ['browser-sync'], function(){
   // Watch JS Files
   gulp.watch(srcJS + '**/*.js', [
     'scripts',
+    'plugins',
     'browser-sync-reload'
   ]);
 
@@ -159,15 +170,78 @@ gulp.task('watch', ['browser-sync'], function(){
 
 
 /**
+ * Copy Scripts
+ */
+
+var copyThisScripts = [
+  srcBower  + 'modernizr/modernizr.js',
+];
+
+gulp.task('copyscripts', function() {
+  gulp.src(copyThisScripts)
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min'}))
+    .pipe(gulp.dest(distJS + 'vendor/'));
+});
+
+
+
+/**
+ * Modernizr
+ */
+
+var modernizrTests = [
+  'cssanimations',
+  'csstransforms',
+  'csstransforms3d',
+  'csstransitions',
+  'backgroundblendmode',
+  'bgsizecover',
+  'preserve3d',
+  'flexbox',
+  'touch',
+  'svg',
+  'inlinesvg',
+  'respond',
+  'hsla',
+  'rgba',
+  'webgl'
+];
+
+gulp.task('modernizr', function() {
+  gulp.src([srcCSS + '**/*.scss', srcJS + '**/*.js'])
+    .pipe(modernizr({
+      crawl: false,
+      options : [
+        'setClasses',
+        'addTest',
+        'html5printshiv',
+        'testAllProps',
+        'fnBind'
+      ],
+      tests: modernizrTests
+    }))
+    .pipe(uglify())
+    .pipe(rename({ suffix: '-custom.min'}))
+    .pipe(gulp.dest(distJS + 'vendor/'));
+});
+
+
+
+/**
  * Init Task
  */
 
 gulp.task('init', [
   'sass',
   'scripts',
+  'plugins',
   'templates',
-  'dummy'
+  'dummy',
+  'copyscripts',
+  'modernizr'
 ]);
+
 
 
 /**
