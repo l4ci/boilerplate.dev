@@ -91,6 +91,12 @@ gulp.task('browser-sync', function(){
 //   });
 // });
 
+gulp.task('clean:templates', function(cb) {
+  del([
+    dist + '/**/*.php'
+  ], cb);
+});
+
 gulp.task('templates', function(){
   gulp.src(srcTemplates + '**/*.php')
     .pipe(gulp.dest(dist));
@@ -254,9 +260,11 @@ gulp.task('watch', ['browser-sync'], function(){
   ]);
 
   // Watch Template Files
-  gulp.watch(srcTemplates + '**/*.php', [
-    'templates'
-  ]);
+  // gulp.watch(srcTemplates + '**/*.php', [
+  //   'templates'
+  // ]);
+
+  gulp.watch([srcTemplates + '**/*.php'], ['clean:templates','templates']);
 });
 
 
