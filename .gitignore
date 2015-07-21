@@ -33,4 +33,5 @@ Thumbs.db
 # Ignore project specifics #
 bower/
 node_modules/
+___dist/
 .tmp

@@ -49,6 +49,9 @@ var autoprefixerOptions = ['last 2 version', '> 1%'];
 \*------------------------------------*/
 
 
+/**
+ * Error Handling
+ */
 
 var onError = function(err) {
     console.log(err);
@@ -258,6 +261,33 @@ gulp.task('modernizr', function() {
     .pipe(notify({ message: 'Modernizr task complete' }));
 });
 
+
+
+/**
+ * Cleaning Tasks
+ */
+
+// Images
+gulp.task('clean:images', function(cb) {
+  del([
+    distImages
+  ], cb);
+});
+
+
+// Templates
+gulp.task('clean:templates', function(cb) {
+  del([
+    dist + '**/*.php'
+  ], cb);
+});
+
+// Fonts
+gulp.task('clean:fonts', function(cb) {
+  del([
+    distFonts
+  ], cb);
+});
 
 
 /**
