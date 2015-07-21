@@ -106,9 +106,9 @@ gulp.task('sass', function(){
       .pipe(autoprefixer({
         browsers: autoprefixerOptions
       }))
-    .pipe(sourcemaps.write('./'))
+    .pipe(sourcemaps.write('./maps/'))
     .pipe(gulp.dest(distCSS))
-    .pipe(browserSync.reload({ stream:true }));
+    .pipe(browserSync.stream({match: "**/*.css"}));
 });
 
 
@@ -140,7 +140,7 @@ gulp.task('plugins', function() {
     .pipe(sourcemaps.init())
     .pipe(jshint())
     .pipe(uglify())
-    .pipe(sourcemaps.write('./'))
+    .pipe(sourcemaps.write('./maps/'))
     .pipe(gulp.dest(distJS));
 });
 
