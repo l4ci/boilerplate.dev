@@ -232,13 +232,16 @@ gulp.task('default', ['browser-sync'], function (){
 
   // Watch JS Files
   gulp.watch(srcJS + '**/*.js', [
-    'scripts',
-    'browser-sync-reload'
+    'scripts'
   ]);
 
   // Watch Template Files
   gulp.watch(srcTemplates + '**/*.php', [
-    'templates',
+    'templates'
+  ]);
+
+  // Watch Template Files
+  gulp.watch(dist + '**/*.{php,html,js}', [
     'browser-sync-reload'
   ]);
 
