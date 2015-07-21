@@ -117,24 +117,24 @@ gulp.task('sass', function(){
  * JS Task
  */
 
-var combineJSScripts = [
+var combineJSPlugins = [
   srcBower  + 'jquery/dist/jquery.js',
 ];
 
-gulp.task('scripts', function() {
-  gulp.src(combineJSScripts)
+gulp.task('plugins', function() {
+  gulp.src(combineJSPlugins)
     .pipe(concat('scripts.min.js'))
     .pipe(jshint())
     .pipe(uglify())
     .pipe(gulp.dest(distJS));
 });
 
-var combineJSPlugins = [
+var combineJSScripts = [
   srcJS     + 'plugins/example.js',
 ];
 
-gulp.task('plugins', function() {
-  gulp.src(combineJSPlugins)
+gulp.task('scripts', function() {
+  gulp.src(combineJSScripts)
     .pipe(plumber())
     .pipe(concat('app.min.js'))
     .pipe(sourcemaps.init())
@@ -233,7 +233,6 @@ gulp.task('watch', ['browser-sync'], function(){
   // Watch JS Files
   gulp.watch(srcJS + '**/*.js', [
     'scripts',
-    'plugins',
     'browser-sync-reload'
   ]);
 
