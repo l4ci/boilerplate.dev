@@ -1,12 +1,12 @@
-/* ==========================================================================
+/*------------------------------------*\
 
-   Grid
+  #Grid
 
-   ========================================================================== */
+\*------------------------------------*/
 
 // Basic Settings
-$column__width: 119px;
-$gutter__width: 16px;
+$column__width: 120px;
+$gutter__width: 20px;
 $columns: 12;
 
 // Do not edit :D
@@ -98,12 +98,12 @@ $max__width: $column__width*$columns;
 }
 
 
-/* ==========================================================================
 
-   Breakpoints
+/*------------------------------------*\
 
-   ========================================================================== */
+  #Breakpoints
 
+\*------------------------------------*/
 
 @mixin breakpoint($breakpoint,$direction: $media-direction) {
 
@@ -140,6 +140,7 @@ $max__width: $column__width*$columns;
 }
 
 
+
 /*------------------------------------*\
 
   #FontSizes
@@ -159,17 +160,18 @@ $max__width: $column__width*$columns;
   line-height: map-get($secondlevel, 'lh')
 }
 
-
+// Example
 // p {
 //   @include typo('default', 'tiny');
 // }
 
 
-/* ==========================================================================
 
-   Clearfix
+/*------------------------------------*\
 
-   ========================================================================== */
+  #Clearfix
+
+\*------------------------------------*/
 
 @mixin clearfix() {
   &:before,
@@ -182,11 +184,13 @@ $max__width: $column__width*$columns;
   }
 }
 
-/* ==========================================================================
 
-   Filter
 
-   ========================================================================== */
+/*------------------------------------*\
+
+  #Filter
+
+\*------------------------------------*/
 
 // https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html
 //
@@ -204,11 +208,12 @@ $max__width: $column__width*$columns;
 }
 
 
-/* ==========================================================================
 
-   Verical Align
+/*------------------------------------*\
 
-   ========================================================================== */
+  #Vertical Align
+
+\*------------------------------------*/
 
 @mixin valign {
   position: relative;
@@ -217,11 +222,12 @@ $max__width: $column__width*$columns;
 }
 
 
-/* ==========================================================================
 
-   Modernizr Mixin
+/*------------------------------------*\
 
-   ========================================================================== */
+  #Modernizr Mixin
+
+\*------------------------------------*/
 
 /**
 * Prints classes for supported or unsupported features
@@ -281,11 +287,11 @@ $max__width: $column__width*$columns;
 }
 
 
-/* ==========================================================================
+/*------------------------------------*\
 
-   Yep Mixin
+  #Yep Mixin
 
-   ========================================================================== */
+\*------------------------------------*/
 
 /**
 * Prints classes for supported features
@@ -310,11 +316,13 @@ $max__width: $column__width*$columns;
   }
 }
 
-/* ==========================================================================
 
-   Nope Mixin
 
-   ========================================================================== */
+/*------------------------------------*\
+
+  #Nope Mixin
+
+\*------------------------------------*/
 
 /**
 * Nope "alias"
@@ -337,100 +345,5 @@ $max__width: $column__width*$columns;
 @mixin nope($features...) {
   @include _modernizr(false, $features...) {
     @content;
-  }
-}
-
-
-/* ==========================================================================
-
-   Tag Mixin
-
-   ========================================================================== */
-
-@mixin tag($tag, $c: false, $m: false, $context: false) {
-  // Defaults
-  $child: null;
-  $ct: null;
-  $mod: null;
-
-  // Build Child and Modifier Fragments
-  @if $c { $child: '__#{$c}'; }
-  @if $m { $mod: "~='#{$m}'"; }
-
-  // Build Selector
-  @if $context {
-    > [#{$tag}#{$child} #{$mod}] {
-      @content;
-    }
-  } @else {
-    @at-root {
-      [#{$tag}#{$child} #{$mod}] {
-        @content;
-      }
-    }
-  }
-}
-
-/* Example
-
-$primButton: "primButton";
-
-$sel: 'bananna';
-
-@include tag($sel) {
-  background-color: yellow;
-  display: inline-block;
-
-  @include tag($sel, false, rotten) {
-    background-color: black;
-  }
-  @include tag($sel, fruit) {
-    color: brown;
-    padding: 10px 40px;
-  }
-
-  @include tag($sel, fruit, too-fresh) {
-    color: yellow;
-  }
-  @include tag($sel, fruit, expanded) {
-    padding: 40px 80px;
-  }
-}
-
-.fruit-basket {
-  @include tag($sel, $context: true) {
-    background-color: red;
-  }
-}
-
-*/
-
-/* ==========================================================================
-
-   Square Angle Corner Mixin
-
-   ========================================================================== */
-@mixin squareAngleCorner($variation: 'top-right') {
-  content: " ";
-
-  position: absolute;
-
-  display: inline-block;
-  width: 9px;
-  height: 10px;
-
-  @if $variation == 'top-right' {
-    border-top: border('solid--xdarkgray3');
-    border-right: border('solid--xdarkgray3');
-
-    top: -8px;
-    right: -2px;
-  }
-  @else if $variation == 'bottom-left' {
-    border-bottom: border('solid--xdarkgray3');
-    border-left: border('solid--xdarkgray3');
-
-    bottom: 0;
-    left: -2px;
   }
 }

@@ -1,4 +1,7 @@
-// Settings & Basics
+/**
+ * Settings & Basic Stuff
+ */
+
 @import 'partials/settings';
 @import 'partials/functions';
 @import 'partials/mixins';
@@ -6,7 +9,10 @@
 @import 'partials/base';
 
 
-// Modules
+/**
+ * All the Sass Partials
+ */
+
 @import 'modules/fonts';
 @import 'modules/header';
 @import 'modules/footer';
