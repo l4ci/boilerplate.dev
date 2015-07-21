@@ -1,7 +1,7 @@
 {
   "name": "boilerplate.dev",
   "version": "1.0.0",
-  "description": "Boilerplate ===========",
+  "description": "My personal Boilerplate with Gulp",
   "main": "gulpfile.js",
   "devDependencies": {
     "browser-sync": "^2.7.13",

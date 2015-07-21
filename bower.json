@@ -1,10 +1,10 @@
 {
-  "name": "Gulp Dev",
-  "version": "0.0.0",
+  "name": "Boilerplate.dev",
+  "version": "1.0.0",
   "authors": [
-    "David Hellmann <david.hellmann@redbullcreative.com>"
+    "David Hellmann <davidhellmann.com@gmail.com>"
   ],
-  "description": "testing",
+  "description": "My personal Boilerplate with Gulp",
   "license": "MIT",
   "ignore": [
     "**/.*",
