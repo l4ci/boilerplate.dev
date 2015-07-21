@@ -11,8 +11,9 @@ var gulp            = require('gulp'),
     imagemin        = require('gulp-imagemin'),
     htmlinject      = require('bs-html-injector'),
     jshint          = require('gulp-jshint'),
-    modernizr       = require('gulp-modernizr');
-    rename          = require('gulp-rename');
+    modernizr       = require('gulp-modernizr'),
+    rename          = require('gulp-rename'),
+    del             = require('del');
 
 
 
@@ -73,6 +74,22 @@ gulp.task('browser-sync', function(){
 /**
  * Move Templates Files
  */
+
+// gulp.task('clean:templates', function() {
+//   del([
+//     dist + '/**/*.php'
+//   ],{
+//     force: true
+//   });
+// });
+
+// gulp.task('copy:templates', function() {
+//   del([
+//     dist + '/**/*.php'
+//   ],{
+//     force: true
+//   });
+// });
 
 gulp.task('templates', function(){
   gulp.src(srcTemplates + '**/*.php')
