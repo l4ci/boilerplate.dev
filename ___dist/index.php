@@ -43,17 +43,11 @@
   <!-- WebsiteWrapper -->
   <div class="websiteWrapper">
 
-    <!-- websiteHeader -->
-    <header class="websiteHeader">
-      Header
-    </header>
+    <?php include('modules/base/header.php'); ?>
 
-    <p>Hello World.</p>
+    Hello World or something else…
 
-    <!-- websiteFooter -->
-    <footer class="websiteFooter">
-      Footer
-    </footer>
+    <?php include('modules/base/footer.php'); ?>
 
   </div>
 

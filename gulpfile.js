@@ -147,32 +147,6 @@ gulp.task('plugins', function() {
 
 
 /**
- * Watch Task
- */
-
-gulp.task('watch', ['browser-sync'], function(){
-
-  // Watch Sass Files
-  gulp.watch(srcCSS + '**/*.scss', ['sass']);
-
-  // Watch JS Files
-  gulp.watch(srcJS + '**/*.js', [
-    'scripts',
-    'plugins',
-    'browser-sync-reload'
-  ]);
-
-
-  // Watch Template Files
-  gulp.watch(srcTemplates + '**/*.php', [
-    'templates',
-    'browser-sync-reload'
-  ]);
-});
-
-
-
-/**
  * Copy Scripts
  */
 
@@ -244,6 +218,32 @@ gulp.task('init', [
   'copyscripts',
   'modernizr'
 ]);
+
+
+
+/**
+ * Watch Task
+ */
+
+gulp.task('watch', ['browser-sync'], function(){
+
+  // Watch Sass Files
+  gulp.watch(srcCSS + '**/*.scss', ['sass']);
+
+  // Watch JS Files
+  gulp.watch(srcJS + '**/*.js', [
+    'scripts',
+    'plugins',
+    'browser-sync-reload'
+  ]);
+
+
+  // Watch Template Files
+  gulp.watch(srcTemplates + '**/*.php', [
+    'templates',
+    'browser-sync-reload'
+  ]);
+});
 
 
 
