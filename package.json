@@ -34,7 +34,5 @@
     "url": "https://github.com/davidhellmann/boilerplate.dev/issues"
   },
   "homepage": "https://github.com/davidhellmann/boilerplate.dev#readme",
-  "dependencies": {
-    "del": "^1.2.0"
-  }
+  "dependencies": {}
 }
