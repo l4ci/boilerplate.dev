@@ -208,7 +208,8 @@ gulp.task('scripts', function() {
  */
 
 var copyThisScripts = [
-  srcBower  + 'modernizr/modernizr.js',
+  // Example
+  // srcBower  + 'modernizr/modernizr.js',
 ];
 
 gulp.task('copyscripts', function() {
