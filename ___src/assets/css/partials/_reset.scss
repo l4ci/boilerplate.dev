@@ -52,6 +52,13 @@ table {
   border-spacing: 0;
 }
 
+*:before,
+*::before,
+*:after,
+*::after {
+  content: "";
+}
+
 /*
 Some Stuff:
 -webkit-overflow-scrolling:touch;
