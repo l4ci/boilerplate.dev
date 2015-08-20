@@ -317,16 +317,16 @@ gulp.task('init', [
 gulp.task('watch', ['browser-sync'], function(){
 
   // Watch Sass Files
-  gulp.watch(srcCSS + '**/*.scss', ['sass']);
+  gulp.watch([srcCSS + '**/*.scss'], ['sass']);
 
   // Watch JS Files
-  gulp.watch(srcJS + '**/*.js', ['scripts']);
+  gulp.watch([srcJS + '**/*.js'], ['scripts']);
 
   // Watch Template Files
-  gulp.watch(srcTemplates + '**/*.php', ['templates']);
+  gulp.watch([srcTemplates + '**/*.php'], ['templates']);
 
   // If an image is modified, run our images task to compress images
-  gulp.watch(srcImages + '**/*', ['images']);
+  gulp.watch([srcImages + '**/*'], ['images']);
 
 });
 
