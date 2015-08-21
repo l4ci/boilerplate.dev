@@ -91,7 +91,7 @@ gulp.task('browser-sync', function(){
  */
 
 gulp.task('copy:fonts', function() {
-  gulp.src(srcFonts + '**/*.{ttf,woff,eof,svg,eot}')
+  gulp.src(srcFonts + '**/*.{ttf,woff,eof,svg,eot,woff2}')
     .pipe(gulp.dest(distFonts))
     .pipe(notify({ message: 'Fonts task complete' }));
 });
