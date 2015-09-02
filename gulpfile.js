@@ -123,6 +123,7 @@ gulp.task('images', function() {
 
 gulp.task('templates', function(){
   gulp.src(srcTemplates + '**/*.php')
+    .pipe(changed(dist))
     .pipe(gulp.dest(dist))
     .pipe(notify({ message: 'Templates task complete' }));
 });
@@ -135,6 +136,7 @@ gulp.task('templates', function(){
 
 gulp.task('dummy', function(){
   gulp.src(srcDummy + '**/*.{php,html}')
+    .pipe(changed(distDummy))
     .pipe(gulp.dest(distDummy))
     .pipe(notify({ message: 'Dummy task complete' }));
 });
