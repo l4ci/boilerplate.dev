@@ -1,26 +1,40 @@
-/*------------------------------------*\
+/**
+ * DO NOT EDIT!
+ * Calc the max-width
+ */
 
-  #Grid
-
-\*------------------------------------*/
-
-// Do not edit :D
 $max__width: $column__width*$columns;
 
-// Include Default Gutter
+
+
+/**
+ * Gutter
+ */
+
 @mixin gutter() {
   padding-left: $gutter__width;
   padding-right: $gutter__width;
 }
 
-// Create a 100% floated container
+
+
+/**
+ * Row
+ */
+
 @mixin row() {
   width: 100%;
   max-width: none;
   @include clearfix();
 }
 
-// Create cols. Optional Setting to remove default gutter @include col(x, no);
+
+
+/**
+ * Cols
+ * Optional Setting to remove default gutter @include col(x, no)
+ */
+
 @mixin col($i, $gutter: yes, $fw: no) {
   @if $i <= $columns {
     float: left;
@@ -34,8 +48,7 @@ $max__width: $column__width*$columns;
     max-width: $column__width * $i;
 
     @if $gutter == yes {
-      padding-left: $gutter__width;
-      padding-right: $gutter__width;
+      @include gutter();
     } @else if $gutter == no {
       padding-left: 0;
       padding-right: 0;
@@ -46,8 +59,7 @@ $max__width: $column__width*$columns;
     @include row();
 
     @if $gutter == yes {
-      padding-left: $gutter__width;
-      padding-right: $gutter__width;
+      @include gutter();
     } @else if $gutter == no {
       padding-left: 0;
       padding-right: 0;
@@ -55,7 +67,12 @@ $max__width: $column__width*$columns;
   }
 }
 
-// Push the container by x cols
+
+
+/**
+ * Push the container by x cols
+ */
+
 @mixin push($i) {
   @if $i > 0 {
     position: relative;
@@ -65,7 +82,12 @@ $max__width: $column__width*$columns;
   }
 }
 
-// Pull the container by x cols
+
+
+/**
+ * Pull the container by x cols
+ */
+
 @mixin pull($i) {
   @if $i > 0 {
     position: relative;
@@ -75,7 +97,12 @@ $max__width: $column__width*$columns;
   }
 }
 
-// ltr / rtl support
+
+
+/**
+ * ltr / rtl support
+ */
+
 @mixin ltr() {
   float: left;
 }
@@ -84,7 +111,12 @@ $max__width: $column__width*$columns;
   float: right;
 }
 
-// center container
+
+
+/**
+ * Center Container
+ */
+
 @mixin center() {
   margin-left: auto;
   margin-right: auto;
@@ -95,11 +127,9 @@ $max__width: $column__width*$columns;
 
 
 
-/*------------------------------------*\
-
-  #Breakpoints
-
-\*------------------------------------*/
+/**
+ * Breakpoints
+ */
 
 @mixin breakpoint($breakpoint,$direction: $media-direction) {
 
@@ -137,37 +167,9 @@ $max__width: $column__width*$columns;
 
 
 
-/*------------------------------------*\
-
-  #FontSizes
-
-\*------------------------------------*/
-
-
-@mixin typo($break: 'default', $type: 'p', $map: $responsivetypo) {
-  // Get the Submap
-  // $submap: map-get(map-get($map, $break), $type); Ist das gleiche wie first / second level
-
-  $firstlevel: map-get($map, $break);
-  $secondlevel: map-get($firstlevel, $type);
-
-  // Generate the Declaration
-  font-size: map-get($secondlevel,'fs');
-  line-height: map-get($secondlevel, 'lh')
-}
-
-// Example
-// p {
-//   @include typo('default', 'tiny');
-// }
-
-
-
-/*------------------------------------*\
-
-  #Clearfix
-
-\*------------------------------------*/
+/**
+ * Clearfix
+ */
 
 @mixin clearfix() {
   &:before,
@@ -182,22 +184,18 @@ $max__width: $column__width*$columns;
 
 
 
-/*------------------------------------*\
-
-  #Filter
-
-\*------------------------------------*/
-
-// https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html
-//
-// grayscale      ex: filter: grayscale(100%);
-// sepia          ex: filter: sepia(100%);
-// saturate       ex: filter: saturate(0%);
-// hue-rotate     ex: filter: hue-rotate(45deg);
-// invert         ex: filter: invert(100%);
-// brightness     ex: filter: brightness(15%);
-// contrast       ex: filter: contrast(200%);
-// blur           ex: filter: blur(2px);
+/**
+ * Filter
+ * https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html
+ * grayscale      ex: filter: grayscale(100%);
+ * sepia          ex: filter: sepia(100%);
+ * saturate       ex: filter: saturate(0%);
+ * hue-rotate     ex: filter: hue-rotate(45deg);
+ * invert         ex: filter: invert(100%);
+ * brightness     ex: filter: brightness(15%);
+ * contrast       ex: filter: contrast(200%);
+ * blur           ex: filter: blur(2px);
+ */
 
 @mixin filter($filter-type,$filter-amount) {
   filter: $filter-type+unquote('(#{$filter-amount})');
@@ -205,141 +203,12 @@ $max__width: $column__width*$columns;
 
 
 
-/*------------------------------------*\
-
-  #Vertical Align
-
-\*------------------------------------*/
+/**
+ * Vertical Align
+ */
 
 @mixin valign {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-}
-
-
-
-/*------------------------------------*\
-
-  #Modernizr Mixin
-
-\*------------------------------------*/
-
-/**
-* Prints classes for supported or unsupported features
-*
-* @access private
-*
-* @param {Bool}      $supports   - Whether to check for supported features or not
-* @param {ArgList}   $features   - List of features
-*
-* @throws `Modernizr mixin should be called within a selector.`
-* @throws `$feature` is not a `string` for `modernizr.`
-*/
-
-@mixin _modernizr($supports, $features...) {
-
-  // Use the 'no-' prefix if checking for unsuported features (e.g. `.no-translate3d`)
-  $prefix: if($supports, '', 'no-');
-
-  // Features selector
-  // a) create a string if checking for supported features. We'll concatenate class names later on (e.g. `.translate3d.opacity selector`)
-  // b) create a list if checking for unsuported features. We'll append the class names later on (e.g. `.no-js selector, .no-translate3d selector`)
-  $selector: if($supports, '', unquote('.no-js'));
-
-  // Make sure the mixin has been called within a selector
-  @if not & {
-    @error 'Modernizr mixin should be called within a selector.';
-  }
-
-  // Generate placeholder and selectors
-  @each $feature in $features {
-
-    // Making sure $feature is a string
-    @if type-of($feature) != string {
-
-      @error '`#{$feature} is not a string for `modernizr`.';
-
-    } @else {
-
-      // Define the new selector string (e.g. `.translate3d` or `.no-translate3d`)
-      $new-selector: #{'.' + $prefix + $feature};
-
-      // Append the new selector
-      // a) to the string if yep (e.g. `.translate3d.opacity`)
-      // b) to the list if nope (e.g. `.no-translate3d, .no-opacity`)
-      $selector: if($supports, $selector + $new-selector, append($selector, $new-selector, comma));
-
-    }
-  }
-
-  // Generate selector nesting features classes and the parent selector
-  $selector: selector-nest($selector, &);
-
-  // Define feature selector(s) and print @content
-    @at-root #{$selector} {
-      @content;
-    }
-}
-
-
-/*------------------------------------*\
-
-  #Yep Mixin
-
-\*------------------------------------*/
-
-/**
-* Prints classes for supported features
-*
-* @requires modernizr
-*
-* @access public
-*
-* @param {ArgList} $features   - List of features
-*
-* @example scss
-* .my-selector {
-*   @include yep(opacity, csstransforms) {
-*     // ...
-*   }
-* }
-*/
-
-@mixin yep($features...) {
-  @include _modernizr(true, $features...) {
-    @content;
-  }
-}
-
-
-
-/*------------------------------------*\
-
-  #Nope Mixin
-
-\*------------------------------------*/
-
-/**
-* Nope "alias"
-* Prints classes for unsupported features and lack of JS
-*
-* @requires modernizr
-*
-* @access public
-*
-* @param {ArgList} $features - List of features
-*
-* @example scss
-* .my-selector {
-*   @include nope(opacity, csstransforms) {
-*     // ...
-*   }
-* }
-*/
-
-@mixin nope($features...) {
-  @include _modernizr(false, $features...) {
-    @content;
-  }
 }

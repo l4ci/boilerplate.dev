@@ -1,215 +1,124 @@
-/*------------------------------------*\
+/**
+ * Grid
+ */
 
-  #Grid
-
-\*------------------------------------*/
-
-$column__width: 120px;
-$gutter__width: 20px;
-$columns: 12;
+$column__width:         120px;
+$gutter__width:         20px;
+$columns:               12;
 
 
 
-/*------------------------------------*\
-
-  #Colors
-
-\*------------------------------------*/
+/**
+ * Colors
+ */
 
 $colors: (
-
-  // Default Colors
-  'white':          #fff,
-  'black':          #000,
+  // Basic Colors
+  'white':              #fff,
+  'black':              #000,
 
   // CI Colors
-  'red':            #ff0,
-  'green':          #0f0,
-  'blue':           #00f,
+  'red':                #ff0,
+  'green':              #0f0,
+  'blue':               #00f,
 );
+
 
 // Color Vars
-$_white:            map-get($colors, 'white');
-$_black:            map-get($colors, 'black');
-$_red:              map-get($colors, 'red');
-$_green:            map-get($colors, 'green');
-$_blue:             map-get($colors, 'blue');
+$_white:                map-get($colors, 'white');
+$_black:                map-get($colors, 'black');
+$_red:                  map-get($colors, 'red');
+$_green:                map-get($colors, 'green');
+$_blue:                 map-get($colors, 'blue');
 
 
 
-/*------------------------------------*\
-
-  #Box-shadows
-
-\*------------------------------------*/
+/**
+ * Box Shadow
+ */
 
 $boxshadows: (
-
-  // Default Colors
-  // example: 'firstLevel':   (0 0 10px 0 rgba(0,0,0,.15)),
+  'layer--01':          (0 0 10px 0 rgba(0,0,0,.15)),
 );
 
 
 
-/*------------------------------------*\
-
-  #Borders
-
-\*------------------------------------*/
+/**
+ * Borders
+ */
 
 $borders: (
 
-  // Dotted Border
-  // 'dotted--xdarkgray':    1px dotted $_xdarkgray,
+  'white':              1px solid $_white,
+  'white--2':           2px solid $_white,
+  'white--2--dotted':   2px dotted $_white,
 
-  // Solid Borders
-  'solid--white':            1px solid $_white,
-  'solid--white--2':         2px solid $_white,
-  'solid--white--6':         6px solid $_white,
-  'solid--white--20':        20px solid $_white,
-
-  // Solid Trans
-  // 'solid--trans':         1px solid transparent,
+  'trans':              1px solid transparent,
 );
 
 
 
-/*------------------------------------*\
+/**
+ * Font Stuff
+ */
 
-  #Fonts
-
-\*------------------------------------*/
-
-// Font family set
 $fonts: (
   'basic':              ('Lucida Grande', Helvetica, Arial, sans-serif),
   'headline':           ('univers-cb', Tahoma, Helvetica, sans-serif),
 );
 
-$base_font_family: map-get($fonts, 'basic');
-$base_font_size: 16px;
-$base_line_height: 1.5;
+$base_font_family:      map-get($fonts, 'basic');
+$base_font_size:        map-get($fontSizes, 'base');
+$base_line_height:      1.5;
 
-
-
-// Font size set
 $fontSizes: (
-  'small':      12px,
-  'base':       16px,
-  'medium':     21px,
-  'large':      28px,
-  'xlarge':     42px,
+  's':                  13px,
+  'base':               18px,
+  'm':                  29px,
+  'l':                  47px,
+  'xl':                 76px,
 );
 
 
 
-$responsivetypo: (
+/**
+ * Horizontal Breakpoints
+ * Add more if you need
+ */
 
-  // Default Breakpoint (Mobile First)
-  'default': (
-    'tiny': (
-      'fs': 12px, 'lh': 1.5,
-    ),
-    'p': (
-      'fs': 16px, 'lh': 1.5,
-    ),
-    'h1': (
-      'fs': 42px, 'lh': 1.25,
-    ),
-    'h2': (
-      'fs': 28px, 'lh': 1.25,
-    ),
-    'h3': (
-      'fs': 21px, 'lh': 1.25,
-    ),
-    'h4': (
-      'fs': 16px, 'lh': 1.25,
-    ),
-  ),
-
-  // Breakpoint Small
-  'small': (
-    'tiny': (
-      'fs': 12px, 'lh': 1.5,
-    ),
-    'p': (
-      'fs': 16px, 'lh': 1.5,
-    ),
-    'h1': (
-      'fs': 84px, 'lh': 1.15,
-    ),
-    'h2': (
-      'fs': 56px, 'lh': 1.15,
-    ),
-    'h3': (
-      'fs': 42px, 'lh': 1.15,
-    ),
-    'h4': (
-      'fs': 16px, 'lh': 1.25,
-    ),
-  )
-);
-
-
-
-/*------------------------------------*\
-
-  #Breakpoint Settings / Direction
-
-\*------------------------------------*/
-
-// Fix Breakpoints Sizes
 $breakpoints: (
-  'default':    '',
-  'small':      667px,
-  'medium':     1024px,
-  'large':      1280px,
+  'default':            '',
+  's':                  667px,
+  'm':                  1024px,
+  'l':                  1280px,
+  'xl':                 1680px,
 );
+
+
+
+/**
+ * Vertical Breakpoints
+ * Add more if you need
+ */
 
 $breakpoints-v: (
-  'small':      600px,
-  'normal':     800px,
-  'large':      1000px,
-);
-
-// horizontal
-$media-direction: min;
-
-// vertical
-$media-direction-v: max;
-
-
-
-/*------------------------------------*\
-
-  #Timings
-
-\*------------------------------------*/
-
-$timings: (
-  'zero':     0,
-  'fast':     250ms,
-  'medium':   500ms,
-  'slow':     1000ms,
-  'xslow':    2000ms,
-  'xxslow':   3000ms,
+  's':                  600px,
+  'm':                  800px,
+  'l':                  1000px,
 );
 
 
 
-/*------------------------------------*\
+/**
+ * Horizontal
+ */
 
-  #Z-Index
+$media-direction:       min;
 
-\*------------------------------------*/
 
-$z-layers: (
-  'deep':      -100,
-  'default':      1,
-  'low':         10,
-  'middle':     100,
-  'high':       500,
-  'dropdown':  1000,
-  'overlay':   2000,
-  'modal':     3000,
-);
+
+/**
+ * Vertical
+ */
+
+$media-direction-v:      max;
