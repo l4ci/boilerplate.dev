@@ -25,7 +25,6 @@ var src             = '___src/',
     srcCSS          = srcAssets + 'css/',
     srcFonts        = srcAssets + 'fonts/',
     srcImages       = srcAssets + 'images/',
-    srcDummy        = src + 'dummy/',
     srcTemplates    = src + 'templates/',
     srcBower        = src + 'bower/',
     dist            = '___dist/',
@@ -34,7 +33,6 @@ var src             = '___src/',
     distCSS         = distAssets + 'css/',
     distFonts       = distAssets + 'fonts/',
     distImages      = distAssets + 'images/',
-    distDummy       = dist + 'dummy/';
 
 
 // Options
@@ -107,7 +105,7 @@ gulp.task('images', function() {
     .pipe(plumber({
       errorHandler: onError
     }))
-    .pipe(changed(distImages))
+    .pipe(changed(distImages, {hasChanged: changed.compareSha1Digest}))
     .pipe(imagemin({
       progressive: true,
       svgoPlugins: [{removeViewBox: false}]
@@ -123,22 +121,9 @@ gulp.task('images', function() {
 
 gulp.task('templates', function(){
   gulp.src(srcTemplates + '**/*.php')
-    .pipe(changed(dist))
+    .pipe(changed(dist, {hasChanged: changed.compareSha1Digest}))
     .pipe(gulp.dest(dist))
     .pipe(notify({ message: 'Templates task complete' }));
-});
-
-
-
-/**
- * Move Dummy Files
- */
-
-gulp.task('dummy', function(){
-  gulp.src(srcDummy + '**/*.{php,html}')
-    .pipe(changed(distDummy))
-    .pipe(gulp.dest(distDummy))
-    .pipe(notify({ message: 'Dummy task complete' }));
 });
 
 
@@ -303,7 +288,6 @@ gulp.task('init', [
   'scripts',
   'plugins',
   'templates',
-  'dummy',
   'copyscripts',
   'modernizr',
   'copy:fonts',
