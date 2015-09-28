@@ -32,7 +32,7 @@ var src             = '___src/',
     distJS          = distAssets + 'js/',
     distCSS         = distAssets + 'css/',
     distFonts       = distAssets + 'fonts/',
-    distImages      = distAssets + 'images/',
+    distImages      = distAssets + 'images/';
 
 
 // Options
