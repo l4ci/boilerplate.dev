@@ -20,7 +20,7 @@ input[type="search"],
 input[type="tel"],
 textarea {
   -webkit-appearance: none;
-  @include typo('default', 'p');
+  font-size: fontSize('base');
   outline: 0;
   border: none;
   display: inline-block;

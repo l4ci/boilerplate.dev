@@ -67,10 +67,6 @@ $fonts: (
   'headline':           ('univers-cb', Tahoma, Helvetica, sans-serif),
 );
 
-$base_font_family:      map-get($fonts, 'basic');
-$base_font_size:        map-get($fontSizes, 'base');
-$base_line_height:      1.5;
-
 $fontSizes: (
   's':                  13px,
   'base':               18px,
@@ -78,6 +74,10 @@ $fontSizes: (
   'l':                  47px,
   'xl':                 76px,
 );
+
+$base_font_family:      map-get($fonts, 'basic');
+$base_font_size:        map-get($fontSizes, 'base');
+$base_line_height:      1.5;
 
 
 

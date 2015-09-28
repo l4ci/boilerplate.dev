@@ -1,8 +1,6 @@
-/*------------------------------------*\
-
-  #Base
-
-\*------------------------------------*/
+/**
+ * Base
+ */
 
 html {
   box-sizing: border-box;
@@ -16,7 +14,8 @@ html {
 
 body {
   font-family: $base_font_family;
-  @include typo('default', 'p');
+  font-size: $base_font_size;
+  line-height: $base_line_height;
   font-weight: 400;
   color: color('white');
   background: color('black');
@@ -45,67 +44,111 @@ a {
 }
 
 
-/*------------------------------------*\
 
-  #Headlines
+/**
+ * Headlines
+ */
 
-\*------------------------------------*/
-
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: font('headline');
-  @include typo('default', 'p');
-  text-transform: uppercase;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: fontFamily('headline');
+  font-size: fontSize('base');
+  font-weight: 700;
+  margin-top: 27px;
 }
 
-h1, .h1 {
-  @include typo('default', 'h1');
-
-  @include breakpoint('small') {
-    @include typo('small', 'h1');
-  }
+h1,
+.h1 {
+  font-size: fontSize('xl');
 }
 
-h2, .h2 {
-  @include typo('default', 'h2');
-
-  @include breakpoint('small') {
-    @include typo('small', 'h2');
-  }
+h2,
+.h2 {
+  font-size: fontSize('l');
 }
 
-h3, .h3 {
-  @include typo('default', 'h3');
-
-  @include breakpoint('small') {
-    @include typo('small', 'h3');
-  }
+h3,
+.h3 {
+  font-size: fontSize('m');
 }
 
-h4, .h4 {
-  @include typo('default', 'h4');
-
-  @include breakpoint('small') {
-    @include typo('small', 'h4');
-  }
-}
-
-
-/*------------------------------------*\
-
-  #Textstuff
-
-\*------------------------------------*/
-
-p {
-  margin-bottom: 40px;
+h4,
+.h4 {
+  font-size: fontSize('base');
 }
 
 
-/*------------------------------------*\
 
-  #Helpers
+/**
+ * Text
+ */
 
-\*------------------------------------*/
+p,
+ul,
+ol,
+pre,
+table,
+blockquote {
+  margin-bottom: 27px;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul {
+  list-style: disc outside;
+  padding-left: 60px;
+}
+
+ol {
+  list-style: decimal outside;
+  padding-left: 60px;
+}
+
+hr {
+  border: 1px solid color('white');
+  margin: -1px 0 27px 0;
+}
+
+b,
+strong,
+em,
+small,
+code {
+  line-height: 1;
+}
+
+sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+
+
+/**
+ * Helpers
+ */
 
 img {
   max-width: 100%;

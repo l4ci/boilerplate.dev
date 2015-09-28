@@ -8,14 +8,14 @@
   background: color('red');
   font-weight: 700;
   color: color('white');
-  @include typo('default', 'h3');
+  font-size: fontSize('m');
   border: none;
   padding: 20px;
   display: inline-block;
   margin: 20px 0;
   cursor: pointer;
   text-align: center;
-  transition: all ms('medium');
+  transition: all .5s;
 
   &:hover {
     color: color('white');
