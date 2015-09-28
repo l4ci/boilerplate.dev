@@ -64,3 +64,13 @@
   @warn "Unknown `#{$key}` in $fontSizes.";
   @return null;
 }
+
+
+
+/**
+ * Vertical Rhythm
+ */
+
+@function vr($i) {
+ @return (($base_font_size * $base_line_height) * $i) + 0px;
+}
