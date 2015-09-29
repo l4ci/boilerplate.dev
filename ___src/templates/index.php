@@ -45,11 +45,20 @@
 
     <?php include('modules/base/header.php'); ?>
 
-    <h1>Kitsch retro</h1>
+    <h1>Kitsch retro ipsum<br>dolores internationale</h1>
 
-    <h2>Typewriter delectus cred</h2>
+    <h2>Typewriter delectus cred<br>Lorem ipsum asdsadasd</h2>
 
     <p>Bushwick Schlitz. Est Shoreditch small batch, dolor Schlitz sapiente twee stumptown ex. Duis Carles pickled, cornhole Thundercats McSweeney's minim PBR vegan Tumblr irony. Kogi eu Thundercats, sed scenester before they sold out et aesthetic. Elit cred Vice ethical pickled sartorial. Stumptown roof party freegan High Life vero, ea sed minim meggings.</p>
+
+    <p>Bushwick Schlitz. Est Shoreditch small batch, dolor Schlitz sapiente twee stumptown ex. Duis Carles pickled, cornhole Thundercats McSweeney's minim PBR vegan Tumblr irony. Kogi eu Thundercats, sed scenester before they sold out et aesthetic. Elit cred Vice ethical pickled sartorial. Stumptown roof party freegan High Life vero, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci meggings.</p>
+
+    <p>Bushwick Schlitz. Est Shoreditch small batch, dolor Schlitz sapiente twee stumptown ex. Duis Carles pickled, cornhole Thundercats McSweeney's minim PBR vegan Tumblr irony. Kogi eu Thundercats, sed scenester before they sold out et aesthetic. Elit cred Vice ethical pickled sartorial. Stumptown roof party freegan High Life vero, ea sed minim meggings.</p>
+    <pre>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Phasellus quis lectus metus, at posuere neque.
+      Sed pharetra nibh eget orci convallis at posuere
+    </pre>
 
     <h3>Truffaut disrupt sartorial deserunt</h3>
 
