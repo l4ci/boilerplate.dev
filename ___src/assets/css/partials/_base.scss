@@ -108,6 +108,7 @@ h4, .h4 {
 p,
 ul,
 ol,
+dl,
 pre,
 table,
 blockquote {
@@ -122,14 +123,47 @@ ol ul {
   margin-bottom: 0;
 }
 
+blockquote {
+  padding: 0 vr(2);
+  font-style: italic;
+
+  footer {
+
+    cite {
+
+    }
+  }
+}
+
 ul {
   list-style: disc outside;
-  padding-left: 60px;
+  padding-left: vr(2);
+
+  @include breakpoint('s') {
+    padding-left: vr(3);
+  }
 }
 
 ol {
   list-style: decimal outside;
-  padding-left: 60px;
+  padding-left: vr(2);
+
+  @include breakpoint('s') {
+    padding-left: vr(3);
+  }
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin: 0;
+  padding-left: vr(2);
+
+  @include breakpoint('s') {
+    padding-left: vr(3);
+  }
 }
 
 hr {
@@ -137,6 +171,53 @@ hr {
   margin: vr(1)-1px 0;
   height: 0;
 }
+
+
+abbr {
+  @extend %uppercase;
+  cursor: help;
+  font-weight: 400;
+  padding-bottom: 1px;
+  position: relative;
+
+  &::after {
+    content: "";
+    width: 0;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    background: color('black');
+    transition: all .25s;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+
+
+/**
+ * Links
+ */
+
+a {
+  color: color('red');
+  transition: all .25s;
+
+  &:hover {
+    color: color('black');
+  }
+
+  &:hover,
+  &:focus {
+    outline: 0;
+  }
+}
+
 
 
 

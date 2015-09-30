@@ -5,6 +5,10 @@
 \*------------------------------------*/
 
 .websiteWrapper {
-  padding: vr(4) 100px;
+  padding: vr(2) 20px;
   max-width: 1200px;
+
+  @include breakpoint('s') {
+    padding: vr(4) 100px;
+  }
 }
