@@ -71,6 +71,6 @@
  * Vertical Rhythm
  */
 
-@function vr($i) {
- @return (($base_font_size * $base_line_height) * $i) + 0px;
+@function vr($key) {
+  @return (($base_font_size * $base_line_height) * $key) + 0px;
 }
