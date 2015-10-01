@@ -248,6 +248,10 @@ figure {
       @include col(9, no);
     }
   }
+
+  &.noCaption img {
+    @include col(12, no);
+  }
 }
 
 figcaption {

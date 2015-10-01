@@ -72,7 +72,7 @@
 
 
 
-    <figure>
+    <figure class="noCaption">
       <img src="assets/images/_dummy/placeholder_16_10.png" alt="Image Alt Text">
     </figure>
 
