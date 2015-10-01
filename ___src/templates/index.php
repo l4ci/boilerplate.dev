@@ -17,21 +17,22 @@
 
   <!-- Google Fonts -->
   <script type="text/javascript">
-  WebFontConfig = {
-    google: { families: [
-      'Vollkorn:400,700italic,700,400italic:latin',
-      'Lato:400,300,300italic,700,400italic,700italic,900,900italic,100,100italic:latin'
-    ]}
-  };
-  (function() {
-    var wf = document.createElement('script');
-    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-    wf.type = 'text/javascript';
-    wf.async = 'true';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-  })(); </script>
+    WebFontConfig = {
+      google: { families: [
+        'Vollkorn:400,700italic,700,400italic:latin',
+        'Lato:400,300,300italic,700,400italic,700italic,900,900italic,100,100italic:latin'
+      ]}
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  </script>
 
   <!-- Favicon -->
   <link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/images/favicon/apple-touch-icon-57x57.png" />
