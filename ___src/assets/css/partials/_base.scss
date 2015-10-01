@@ -222,8 +222,33 @@ a {
 
 
 /**
- * Images
+ * Figures / Images
  */
+
+figure {
+  margin: vr(1) 0 vr(2) 0;
+  @include clearfix();
+
+  img {
+    @include breakpoint('m') {
+      @include col(9, no);
+    }
+  }
+}
+
+figcaption {
+  font-size: 15px;
+  padding: 10px 0 0 0;
+  color: lighten(color('black'), 50%);
+
+  @include breakpoint('m') {
+    @include col(2.5, no);
+    padding: vr(1) 0 0 0;
+    float: right;
+    text-align: left;
+    border-top: 2px solid #ccc;
+  }
+}
 
 img {
   max-width: 100%;
