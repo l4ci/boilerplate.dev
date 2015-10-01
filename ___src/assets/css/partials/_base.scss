@@ -125,8 +125,20 @@ ol ul {
 }
 
 blockquote {
-  padding: 0 vr(2);
-  font-style: italic;
+  margin: vr(2) 0;
+
+  p {
+    font-family: fontFamily('headline');
+    font-size: fontSize('l') * 0.7;
+    line-height: vr(2) * 0.7;
+    font-weight: 900;
+    font-style: italic;
+
+    @include breakpoint('s') {
+      font-size: fontSize('l');
+      line-height: vr(2);
+    }
+  }
 
   footer {
 
@@ -255,4 +267,23 @@ img {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
+}
+
+
+
+/**
+ * Video
+ */
+
+.videoWrapper {
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative;
+  margin: vr(1) 0 vr(2) 0;
+
+  iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
 }
