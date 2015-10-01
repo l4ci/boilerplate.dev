@@ -180,9 +180,10 @@ dd {
 }
 
 hr {
-  border: 1px solid color('black');
-  margin: vr(1)-1px 0;
-  height: 0;
+  border: none;
+  margin: vr(2)-1px 0;
+  height: 1px;
+  background: color('black');
 }
 
 
