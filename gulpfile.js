@@ -172,7 +172,7 @@ gulp.task('plugins', function() {
 });
 
 var combineJSScripts = [
-  srcJS     + 'scripts/example.js',
+  srcJS     + 'scripts/bodyclass.js',
   srcJS     + 'scripts/blazy.js',
 ];
 
