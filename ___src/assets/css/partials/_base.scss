@@ -243,13 +243,32 @@ figure {
   margin: vr(1) 0 vr(2) 0;
   @include clearfix();
 
-  img {
+  .imageWrapper {
     @include breakpoint('m') {
       @include col(9, no);
     }
+
+    img {
+      width: 100%;
+    }
+
+    &.b-lazy {
+      background-size: 100% 100%;
+    }
+
+    .blurredImage {
+      opacity: 1;
+      transition: all .5s;
+    }
+
+    &.b-loaded {
+      .blurredImage {
+        opacity: 0;
+      }
+    }
   }
 
-  &.noCaption img {
+  &.noCaption .imageWrapper {
     @include col(12, no);
   }
 }

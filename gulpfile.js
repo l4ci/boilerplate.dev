@@ -159,6 +159,7 @@ gulp.task('sass', function(){
 
 var combineJSPlugins = [
   srcBower  + 'jquery/dist/jquery.js',
+  srcBower  + 'bLazy/blazy.js',
 ];
 
 gulp.task('plugins', function() {
@@ -172,6 +173,7 @@ gulp.task('plugins', function() {
 
 var combineJSScripts = [
   srcJS     + 'scripts/example.js',
+  srcJS     + 'scripts/blazy.js',
 ];
 
 gulp.task('scripts', function() {
