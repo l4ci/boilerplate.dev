@@ -244,6 +244,8 @@ figure {
   @include clearfix();
 
   .imageWrapper {
+    overflow: hidden;
+
     @include breakpoint('m') {
       @include col(9, no);
     }
