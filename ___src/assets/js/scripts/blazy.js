@@ -5,7 +5,7 @@
 ;(function($) {
 
   var bLazy = new Blazy({
-    offset: 0,
+    offset: 500,
     success: function(ele){
       console.log('image loaded.');
     }
