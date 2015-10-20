@@ -253,12 +253,13 @@ figure {
     }
 
     &.b-lazy {
+      background-color: #ddd;
       background-size: 100% 100%;
     }
 
     .blurredImage {
       opacity: 1;
-      transition: all .5s;
+      transition: all .5s .5s;
     }
 
     &.b-loaded {
