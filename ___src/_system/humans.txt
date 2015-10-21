@@ -1,19 +1,26 @@
-/* TEAM
-   -------------------------------------------------------------------------- */
+/* TEAM */
 
-   Author:              David Hellmann
-   Contact:             davidhellmann.com@gmail.com
-   Website:             http://davidhellmann.com
-   Twitter:             @davidhellmann
-   Meatspace:           Salzburg, Austria
-   Contributions:       Design / HTML / SASS (CSS) / JS / CMS
+Author:              David Hellmann
+Contact:             davidhellmann.com@gmail.com
+Website:             http://davidhellmann.com
+Twitter:             @davidhellmann
+Location:            Salzburg, Austria
+Contributions:       Design, HTML, Sass (CSS), JS
 
 
-/* SITE
-   -------------------------------------------------------------------------- */
 
-   Language:            English
-   Doctype:             HTML5 with CSS3
-   Tools:               WordPress
-   IDE:                 SublimeText 3
-   Built on:            Mac OS X
+/* SITE */
+
+Language:            English
+Standards:           HTML5, CSS3
+Components:          Modernizr, jQuery, etc.
+CMS:                 Static
+Tools:               Gulp, Bower, NPM
+IDE:                 SublimeText 3
+Built on:            Mac OS X
+
+
+
+/* THANKS */
+
+Name:                Sascha Fuchs
