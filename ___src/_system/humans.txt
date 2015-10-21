@@ -1,0 +1,19 @@
+/* TEAM
+   -------------------------------------------------------------------------- */
+
+   Author:              David Hellmann
+   Contact:             davidhellmann.com@gmail.com
+   Website:             http://davidhellmann.com
+   Twitter:             @davidhellmann
+   Meatspace:           Salzburg, Austria
+   Contributions:       Design / HTML / SASS (CSS) / JS / CMS
+
+
+/* SITE
+   -------------------------------------------------------------------------- */
+
+   Language:            English
+   Doctype:             HTML5 with CSS3
+   Tools:               WordPress
+   IDE:                 SublimeText 3
+   Built on:            Mac OS X

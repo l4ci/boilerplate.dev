@@ -27,6 +27,7 @@ var src             = '___src/',
     srcImages       = srcAssets + 'images/',
     srcTemplates    = src + 'templates/',
     srcBower        = src + 'bower/',
+    srcSystem       = src + '_system/',
     dist            = '___dist/',
     distAssets      = dist + 'assets/',
     distJS          = distAssets + 'js/',
@@ -91,7 +92,7 @@ gulp.task('browser-sync', function(){
 gulp.task('copy:fonts', function() {
   gulp.src(srcFonts + '**/*.{ttf,woff,eof,svg,eot,woff2}')
     .pipe(gulp.dest(distFonts))
-    .pipe(notify({ message: 'Fonts task complete' }));
+    .pipe(notify({ message: 'Yo, Fonts task complete.' }));
 });
 
 
@@ -111,7 +112,7 @@ gulp.task('images', function() {
       svgoPlugins: [{removeViewBox: false}]
     }))
     .pipe(gulp.dest(distImages))
-    .pipe(notify({ message: 'Images task complete' }));
+    .pipe(notify({ message: 'Yo, Images task complete.' }));
 });
 
 
@@ -123,7 +124,7 @@ gulp.task('templates', function(){
   gulp.src(srcTemplates + '**/*.php')
     .pipe(changed(dist, {hasChanged: changed.compareSha1Digest}))
     .pipe(gulp.dest(dist))
-    .pipe(notify({ message: 'Templates task complete' }));
+    .pipe(notify({ message: 'Yo, Templates task complete.' }));
 });
 
 
@@ -148,7 +149,7 @@ gulp.task('sass', function(){
       }))
     .pipe(sourcemaps.write('./maps/'))
     .pipe(gulp.dest(distCSS))
-    .pipe(notify({ message: 'Sass task complete' }));
+    .pipe(notify({ message: 'Yo, Sass task complete.' }));
 });
 
 
@@ -168,7 +169,7 @@ gulp.task('plugins', function() {
     .pipe(jshint())
     .pipe(uglify())
     .pipe(gulp.dest(distJS))
-    .pipe(notify({ message: 'Plugins task complete' }));
+    .pipe(notify({ message: 'Yo, Plugins task complete.' }));
 });
 
 var combineJSScripts = [
@@ -187,7 +188,7 @@ gulp.task('scripts', function() {
     .pipe(uglify())
     .pipe(sourcemaps.write('./maps/'))
     .pipe(gulp.dest(distJS))
-    .pipe(notify({ message: 'Scripts task complete' }));
+    .pipe(notify({ message: 'Yo, Scripts task complete.' }));
 });
 
 
@@ -201,12 +202,32 @@ var copyThisScripts = [
   // srcBower  + 'modernizr/modernizr.js',
 ];
 
-gulp.task('copyscripts', function() {
+gulp.task('copy:scripts', function() {
   gulp.src(copyThisScripts)
     .pipe(uglify())
     .pipe(rename({ suffix: '.min'}))
     .pipe(gulp.dest(distJS + 'vendor/'))
-    .pipe(notify({ message: 'Copyscripts task complete' }));
+    .pipe(notify({ message: 'Yo, Copyscripts task complete.' }));
+});
+
+
+
+/**
+ * Copy System Files
+ */
+
+var copySystemFiles = [
+  // Example
+  srcSystem  + '.htaccess',
+  srcSystem  + 'humans.txt',
+  srcSystem  + 'robots.txt',
+  srcSystem  + '404.html',
+];
+
+gulp.task('copy:systemFiles', function() {
+  gulp.src(copySystemFiles)
+    .pipe(gulp.dest(dist))
+    .pipe(notify({ message: 'Yo, System files task complete.' }));
 });
 
 
@@ -249,7 +270,7 @@ gulp.task('modernizr', function() {
     .pipe(uglify())
     .pipe(rename({ suffix: '-custom.min'}))
     .pipe(gulp.dest(distJS + 'vendor/'))
-    .pipe(notify({ message: 'Modernizr task complete' }));
+    .pipe(notify({ message: 'Yo, Modernizr task complete.' }));
 });
 
 
@@ -290,8 +311,9 @@ gulp.task('init', [
   'scripts',
   'plugins',
   'templates',
-  'copyscripts',
+  'copy:scripts',
   'modernizr',
+  'copy:systemFiles',
   'copy:fonts',
   'images'
 ]);
