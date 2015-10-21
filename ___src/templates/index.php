@@ -7,7 +7,8 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  <!-- Webfonts -->
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/app.min.css">
 
   <!-- Modernizr -->
   <script src="assets/js/vendor/modernizr-custom.min.js"></script>
@@ -163,11 +164,6 @@
   <!-- JS Scripts & Plugins -->
   <script src="assets/js/plugins.min.js"></script>
   <script src="assets/js/app.min.js"></script>
-
-
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/app.min.css">
 
   <!-- Google Analytics JavaScript here -->
 
