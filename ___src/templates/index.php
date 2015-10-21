@@ -9,9 +9,6 @@
 
   <!-- Webfonts -->
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/app.min.css">
-
   <!-- Modernizr -->
   <script src="assets/js/vendor/modernizr-custom.min.js"></script>
 
@@ -65,12 +62,9 @@
     <?php include('modules/base/header.php'); ?>
 
     <h1>Kitsch retro ipsum<br>dolores internationale</h1>
-
     <h2>Typewriter delectus cred<br>Lorem ipsum asdsadasd</h2>
 
     <p><abbr title="This is a Title…">Bushwick Schlitz</abbr>. Est Shoreditch small batch, dolor Schlitz sapiente twee stumptown ex. Duis Carles pickled, cornhole Thundercats McSweeney's minim PBR vegan Tumblr irony. Kogi eu Thundercats, sed scenester before they sold out et aesthetic. Elit cred Vice ethical pickled sartorial. Stumptown roof party freegan High Life vero, ea sed minim meggings.</p>
-
-
 
     <figure class="noCaption">
       <div class="imageWrapper b-lazy" data-src="assets/images/_dummy/placeholder_16_10_hires.jpg">
@@ -86,7 +80,6 @@
       </div>
       <figcaption>Est Shoreditch small batch, dolor Schlitz sapiente twee stumptown ex. Duis Carles pickled, cornhole Thundercats McSweeney's minim PBR vegan Tumblr irony.</figcaption>
     </figure>
-
 
     <p>Bushwick Schlitz. Est Shoreditch small batch, dolor Schlitz sapiente twee stumptown ex. Duis Carles pickled, cornhole Thundercats <span class="uppercase">McSweeney's minim PBR vegan Tumblr</span> irony. Kogi eu Thundercats, sed scenester before they sold out et aesthetic. Elit cred Vice ethical pickled sartorial. Stumptown roof party freegan High Life vero, ea sed minim meggings.</p>
     <pre>
@@ -163,7 +156,6 @@
 
     <p>Laboris selfies occaecat umami, forage Tumblr American Apparel. Retro Terry Richardson culpa id swag polaroid Intelligentsia American Apparel eu, esse non post-ironic fugiat master cleanse. Direct trade gluten-free blog, fanny pack cray labore skateboard before they sold out adipisicing non magna id Helvetica freegan. Disrupt aliqua Brooklyn church-key lo-fi dreamcatcher.</p>
 
-
     <?php include('modules/base/footer.php'); ?>
 
   </div>
@@ -172,8 +164,12 @@
   <script src="assets/js/plugins.min.js"></script>
   <script src="assets/js/app.min.js"></script>
 
-  <!-- Google Analytics JavaScript here -->
 
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/app.min.css">
+
+  <!-- Google Analytics JavaScript here -->
 
   <?php
     $host = $_SERVER['HTTP_HOST'];
