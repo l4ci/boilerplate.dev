@@ -324,7 +324,7 @@ gulp.task('init', [
  * Watch Task
  */
 
-gulp.task('watch', ['browser-sync'], function(){
+gulp.task('watch', function() {
 
   // Watch Sass Files
   gulp.watch([srcCSS + '**/*.scss'], ['sass']);
@@ -346,4 +346,4 @@ gulp.task('watch', ['browser-sync'], function(){
  * Default Task
  */
 
-gulp.task('default', ['watch', 'browser-sync']);
+gulp.task('default', ['browser-sync', 'watch']);
